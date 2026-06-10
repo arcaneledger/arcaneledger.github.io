@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Arcane Ledger — Your Personal MTG Coach</title>
-  <meta name="description" content="Scan your Magic: The Gathering cards, track your collection's value, and discover every deck you're already close to building. Arcane Ledger is your personal MTG coach for Android." />
+  <meta name="description" content="Scan your Magic: The Gathering cards, track your collection's value, and discover every deck you're already close to building. Arcane Ledger is your personal MTG coach for Android and iOS." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -27,8 +27,30 @@
     <p class="tagline">Your Personal MTG Coach</p>
     <p class="sub">Scan your cards in seconds, watch your collection's value, and find out which decks
       you're already closer to building than you think — then get coached to the finish line.</p>
-    <a class="badge-soon" href="#features">COMING SOON TO GOOGLE PLAY</a>
-    <span class="badge-note">Android first · iOS later</span>
+    <div class="stores">
+      <div class="store-card">
+        <img class="qr" src="qr-play.png" alt="QR code — Google Play (coming soon)" />
+        <a class="store-badge" href="#features" aria-label="Google Play — coming soon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 2.5v19l10-9.5L4 2.5z" fill="#34a8fe"/>
+            <path d="M4 2.5l10 9.5 3.2-3L6.2 2.2C5.3 1.7 4.4 1.9 4 2.5z" fill="#5ee08a"/>
+            <path d="M4 21.5l10-9.5 3.2 3-11 6.8c-.9.5-1.8.3-2.2-.3z" fill="#fe4a5d"/>
+            <path d="M17.2 9l3.3 2c1 .6 1 1.4 0 2l-3.3 2-3.2-3 3.2-3z" fill="#ffd34e"/>
+          </svg>
+          <span><span class="small">GET IT ON</span><span class="big">Google Play</span></span>
+        </a>
+      </div>
+      <div class="store-card">
+        <img class="qr" src="qr-appstore.png" alt="QR code — App Store (coming soon)" />
+        <a class="store-badge" href="#features" aria-label="App Store — coming soon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill="#ffffff" d="M16.6 12.9c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.7 0-1.7-.8-2.8-.7-1.4 0-2.8.8-3.5 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.5 2.2 2.6 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.2 1.2-2.4 1.2-2.4s-2.3-.9-2.4-3.7zM14.5 6.7c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/>
+          </svg>
+          <span><span class="small">Download on the</span><span class="big">App Store</span></span>
+        </a>
+      </div>
+    </div>
+    <p class="stores-note">LAUNCHING SOON ON BOTH STORES — until then the QR codes visit this site</p>
   </section>
 
   <section id="features" class="features wrap">
@@ -38,8 +60,9 @@
         <span class="k">SCAN</span>
         <h3>Card Scanner</h3>
         <p>Point your camera at a card and it's in your ledger — instant on-device recognition, online or off.
-           Hands-free auto-scan counts whole stacks, duplicates included, and can match the exact printing
-           you own: borderless, alt-art, foils.</p>
+           Hands-free auto-scan counts whole stacks, duplicates included. Premium scans identify the exact
+           printing you own on most cards — foils detected automatically — and a one-tap picker handles
+           the rare miss.</p>
       </div>
       <div class="card">
         <span class="k">BUILD</span>
@@ -64,8 +87,8 @@
         <span class="k">PLAY</span>
         <h3>Playgroup &amp; Game Table</h3>
         <p>Add friends, message your group, match trades, and get told the moment you and a friend can
-           build a deck together tonight. Life counters, commander damage, real 3D dice and coin flips
-           for game night.</p>
+           build a deck together tonight. Life counters, commander damage, dice and coin flips for
+           game night.</p>
       </div>
       <div class="card">
         <span class="k">PLANS</span>
