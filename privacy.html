@@ -23,7 +23,7 @@
 
   <main class="page wrap">
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective June 10, 2026 · Arcane Ledger is made by TCGora</p>
+    <p class="updated">Effective June 14, 2026 · Arcane Ledger is made by TCGora</p>
 
     <p>This policy explains what information the Arcane Ledger app collects, why, and what happens to it.
        The short version: we collect what the app needs to work, we don't run ads, and we never sell your
@@ -67,9 +67,10 @@
     </ul>
 
     <h2>Purchases</h2>
-    <p>Subscriptions are processed entirely by your app store — Google Play on Android, the App Store on
-       iOS. We never see or store your payment details — we only store your subscription status so premium
-       features unlock.</p>
+    <p>Subscriptions are billed entirely by your app store — Google Play on Android, the App Store on
+       iOS — so we never see or store your payment details. We use RevenueCat to confirm your subscription
+       status and unlock premium features; it receives a purchase token and an app-specific user identifier
+       to validate the subscription, never your payment information.</p>
 
     <h2>What we don't do</h2>
     <ul>
@@ -90,8 +91,9 @@
 
     <h2>Service providers</h2>
     <p>We use Supabase (accounts, data storage, messaging), Google Play and the Apple App Store (billing),
-       Expo (app delivery and push notifications), Anthropic (AI responses), Ximilar (premium card-image
-       identification), and Scryfall (card data and images). Each receives only what its job requires.</p>
+       RevenueCat (subscription management), Expo with Google Firebase Cloud Messaging (app delivery and
+       push notifications), Anthropic (AI responses), Ximilar (premium card-image identification), and
+       Scryfall (card data and images). Each receives only what its job requires.</p>
 
     <h2>Changes</h2>
     <p>If this policy changes meaningfully, we'll update this page and the effective date above.</p>
