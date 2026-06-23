@@ -78,6 +78,15 @@ header { padding: 18px 0; border-bottom: 1px solid rgba(58, 26, 110, 0.5); }
 .card p { color: var(--text-soft); font-size: 14px; }
 .card .k { color: var(--purple); font-size: 10px; letter-spacing: 2px; font-weight: 700; display: block; margin-bottom: 8px; }
 
+/* Honest-by-design trust strip */
+.honest { padding: 6px 0 64px; }
+.honest .panel { background: var(--panel2); border: 1px solid var(--border); border-radius: 16px; padding: 26px 28px; max-width: 760px; margin: 0 auto; }
+.honest .lead { color: var(--text-soft); font-size: 14.5px; text-align: center; margin-bottom: 20px; }
+.honest ul { list-style: none; display: grid; gap: 13px; }
+.honest li { color: var(--text-soft); font-size: 14px; padding-left: 28px; position: relative; }
+.honest li::before { content: "✓"; color: var(--good); position: absolute; left: 0; top: 0; font-weight: 700; }
+.honest li strong { color: var(--text); }
+
 /* Generic content pages (privacy / terms / support) */
 .page { padding: 56px 0 70px; max-width: 760px; margin: 0 auto; }
 .page h1 { color: var(--gold); font-size: 28px; letter-spacing: 2px; margin-bottom: 6px; }
