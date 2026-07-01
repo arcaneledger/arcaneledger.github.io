@@ -121,8 +121,14 @@
     }
     .phone .screen {
       position: relative; background: #0d0918; border-radius: 36px; padding: 12px 13px 12px;
-      overflow: hidden; min-height: 500px; display: flex; flex-direction: column;
+      overflow: hidden; min-height: 460px; display: flex; flex-direction: column;
     }
+    /* Home quick-actions row (mirrors the real app's Ask Moxi / Learn / Game Table). */
+    .qrow { display: flex; gap: 7px; margin-bottom: 12px; }
+    .qrow i { flex: 1; text-align: center; font-style: normal; border: 1px solid var(--border-soft); background: #150e28; border-radius: 10px; padding: 9px 4px; color: #8874ad; font-size: 9px; letter-spacing: 0.4px; }
+    /* Moxi chat input bar. */
+    .minput { display: flex; align-items: center; gap: 8px; border: 1px solid #32235a; background: #120c22; border-radius: 12px; padding: 9px 12px; color: #5c4a85; font-size: 10.5px; }
+    .minput b { margin-left: auto; width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(180deg, #f6e2a8, #d6a94e); color: #0a0714; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
     .phone .screen > .mcard, .phone .screen > .chatrow { flex-shrink: 0; }
     /* Short screens: let the cards breathe into the space instead of pooling at the top. */
     .phone .app-sub { margin-bottom: 16px; }
@@ -333,6 +339,7 @@
             </div>
             <div class="app-title">ARCANE LEDGER</div>
             <div class="app-sub">YOUR PERSONAL MTG COACH</div>
+            <div class="qrow"><i>Ask Moxi</i><i>Learn to Play</i><i>Game Table</i></div>
             <div class="mcard m-gold">
               <span class="lbl">MOXI NOTICED</span>
               <div class="big">Splinter Twin was just unbanned in Modern — you own 2</div>
@@ -447,6 +454,16 @@
                   </div>
                 </div>
               </div>
+              <div class="mcard">
+                <div class="ringrow">
+                  <div class="ring" style="background: conic-gradient(var(--teal) 101deg, #241a3e 0); color: var(--teal);"><span>28%</span></div>
+                  <div>
+                    <div class="big">Mono-Blue Tempo</div>
+                    <div class="small">a budget build is within reach</div>
+                    <div class="bar"><i style="width: 28%; background: var(--teal);"></i></div>
+                  </div>
+                </div>
+              </div>
               <div class="gbar"><i></i></div>
             </div>
           </div>
@@ -482,6 +499,7 @@
                 <span class="who">PROPOSED — YOU CONFIRM</span>
                 <div class="chips"><i>Save this deck</i><i>Show the 4 cards</i><i>Cheapest printings</i></div>
               </div>
+              <div class="minput">Ask about decks, cards, or rules… <b>→</b></div>
               <div class="gbar"><i></i></div>
             </div>
           </div>
@@ -524,6 +542,11 @@
                 <span class="lbl">REPRINT</span>
                 <div class="big">A wishlist card was just reprinted</div>
                 <div class="small">reprints usually push the price down</div>
+              </div>
+              <div class="mcard">
+                <span class="lbl" style="color: var(--teal);">✦ MONTHLY REPORT</span>
+                <div class="big">Your June report is ready</div>
+                <div class="small">value, biggest mover &amp; best pickup</div>
               </div>
               <div class="gbar"><i></i></div>
             </div>
