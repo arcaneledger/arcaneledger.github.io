@@ -3,158 +3,620 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#181124" />
-  <title>Arcane Ledger — Your Personal MTG Coach</title>
-  <meta name="description" content="Scan your Magic: The Gathering cards, track your collection's value, import decks with the exact printings you chose, browse community lists, and discover every deck you're already close to building. Arcane Ledger is your personal MTG coach for Android and iOS." />
+  <meta name="theme-color" content="#0a0714" />
+  <title>Arcane Ledger — Know what you can build, not just what you own | MTG Collection Coach</title>
+  <meta name="description" content="Scan your Magic: The Gathering collection in minutes. Arcane Ledger shows every deck you're already close to finishing, finds the cheapest real path there, and watches prices, bans, and reprints for you. Free unlimited scanning. Launching soon on Google Play." />
   <link rel="icon" type="image/png" href="icon.png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="canonical" href="https://arcaneledger.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Arcane Ledger — Your Personal MTG Coach" />
+  <meta property="og:description" content="The app that tells you what you can BUILD — not just what you own. Scan your collection, see every deck you're close to, and let it watch prices, bans, and reprints for you." />
+  <meta property="og:url" content="https://arcaneledger.app/" />
+  <meta property="og:image" content="https://arcaneledger.app/icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Arcane Ledger — Your Personal MTG Coach" />
+  <meta name="twitter:description" content="The app that tells you what you can BUILD — not just what you own." />
+  <meta name="twitter:image" content="https://arcaneledger.app/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0714;
+      --bg2: #0e0a1c;
+      --panel: #171028;
+      --panel2: #1c1132;
+      --border: #34215c;
+      --border-soft: #261a44;
+      --gold: #e8c97a;
+      --gold-deep: #c9a84c;
+      --purple: #9d6bff;
+      --purple-muted: #7a5faa;
+      --text: #efe9f8;
+      --soft: #c3b3e0;
+      --dim: #8874ad;
+      --good: #4dff9a;
+      --red: #ff7a5c;
+      --teal: #4dffd8;
+      --radius: 18px;
+      --disp: "Cinzel", Georgia, serif;
+      --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body { background: var(--bg); color: var(--text); font-family: var(--body); line-height: 1.65; overflow-x: hidden; }
+    /* Fixed ambient glow — repaints correctly on mobile (background-attachment:fixed flashes white). */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background:
+        radial-gradient(900px 520px at 78% -80px, rgba(157, 107, 255, 0.16), transparent 60%),
+        radial-gradient(700px 420px at 12% 8%, rgba(232, 201, 122, 0.07), transparent 55%),
+        var(--bg);
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+    a { color: var(--gold); }
+    h1, h2, .brand, .price-name { font-family: var(--disp); }
+    section { position: relative; }
+    .kicker { color: var(--purple); font-size: 12px; letter-spacing: 4px; font-weight: 700; text-transform: uppercase; }
+
+    /* ── Nav ─────────────────────────────────────────────── */
+    header.site {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10, 7, 20, 0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(52, 33, 92, 0.55);
+    }
+    .nav { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+    .nav img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav .brand { color: var(--gold); font-weight: 700; letter-spacing: 2.5px; font-size: 15px; text-decoration: none; }
+    .nav .links { margin-left: auto; display: flex; gap: 24px; align-items: center; }
+    .nav .links a { color: var(--soft); text-decoration: none; font-size: 13px; letter-spacing: 1px; }
+    .nav .links a:hover { color: var(--gold); }
+    .nav .cta {
+      background: linear-gradient(180deg, #f6e2a8, #d6a94e); color: #0a0714 !important;
+      padding: 8px 18px; border-radius: 10px; font-weight: 700; font-size: 12.5px; letter-spacing: 1px;
+    }
+    @media (max-width: 720px) { .nav .links a:not(.cta) { display: none; } }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .hero { padding: 72px 0 40px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+    .hero h1 { color: var(--text); font-size: 46px; line-height: 1.18; font-weight: 700; margin: 18px 0 20px; letter-spacing: 0.5px; }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero .sub { color: var(--soft); font-size: 17px; max-width: 520px; }
+    .hero .ctas { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; align-items: center; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: linear-gradient(180deg, #f6e2a8, #d6a94e); color: #0a0714; text-decoration: none;
+      padding: 15px 28px; border-radius: 14px; font-weight: 800; letter-spacing: 1px; font-size: 14.5px;
+      box-shadow: 0 10px 34px rgba(232, 201, 122, 0.22);
+    }
+    .btn-gold:hover { filter: brightness(1.06); }
+    .chip-soon {
+      display: inline-flex; align-items: center; gap: 9px; color: var(--dim);
+      border: 1px solid var(--border); border-radius: 14px; padding: 14px 20px; font-size: 13px; letter-spacing: 0.6px;
+    }
+    .chip-soon svg { width: 18px; height: 18px; opacity: 0.9; }
+    .hero .proof { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 34px; }
+    .hero .proof span { color: var(--dim); font-size: 12.5px; letter-spacing: 0.6px; display: inline-flex; align-items: center; gap: 7px; }
+    .hero .proof b { color: var(--good); font-weight: 700; }
+
+    /* ── Phone mockups (pure CSS, illustrative renders of real app surfaces) ── */
+    .phone {
+      width: 300px; border-radius: 34px; padding: 12px;
+      background: linear-gradient(160deg, #241640, #120b22);
+      border: 1px solid #3b2766; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 90px rgba(157, 107, 255, 0.12);
+      margin: 0 auto;
+    }
+    .phone .screen { background: #0d0918; border-radius: 24px; padding: 16px 13px 18px; overflow: hidden; }
+    .phone .statusbar { display: flex; justify-content: space-between; color: #4d3d70; font-size: 9px; letter-spacing: 1px; margin-bottom: 12px; }
+    .phone .app-title { text-align: center; color: var(--gold); font-family: var(--disp); font-weight: 700; letter-spacing: 3px; font-size: 15px; }
+    .phone .app-sub { text-align: center; color: #5c4a85; font-size: 8.5px; letter-spacing: 2.4px; margin: 3px 0 12px; }
+    .mcard { border-radius: 12px; padding: 11px 12px; margin-bottom: 9px; border: 1px solid var(--border-soft); background: #150e28; }
+    .mcard .lbl { font-size: 8px; letter-spacing: 1.8px; font-weight: 700; margin-bottom: 5px; display: block; }
+    .mcard .big { color: var(--text); font-size: 12px; font-weight: 700; line-height: 1.45; }
+    .mcard .small { color: #8874ad; font-size: 10px; line-height: 1.5; margin-top: 3px; }
+    .m-notice { background: #1b1030; border-color: #4b3380; }
+    .m-notice .lbl { color: var(--purple); }
+    .m-gold { background: #1c150e; border-color: #5c4a1e; }
+    .m-gold .lbl { color: var(--gold); }
+    .m-red { background: #200e12; border-color: #6e2a2a; }
+    .m-red .lbl { color: var(--red); }
+    .ringrow { display: flex; align-items: center; gap: 11px; }
+    .ring { width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 11px; font-weight: 800; }
+    .ring span { background: #0d0918; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; }
+    .chatrow { border-radius: 12px; padding: 10px 12px; margin-bottom: 9px; font-size: 11px; line-height: 1.55; }
+    .chat-user { background: #241a3e; color: #d9cdf2; margin-left: 34px; border: 1px solid #32235a; }
+    .chat-moxi { background: #150e28; color: #c3b3e0; margin-right: 22px; border: 1px solid var(--border-soft); }
+    .chat-moxi .who { color: var(--purple); font-size: 8px; letter-spacing: 2px; font-weight: 800; display: block; margin-bottom: 4px; }
+    .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .chips i { font-style: normal; font-size: 9px; letter-spacing: 0.6px; color: var(--gold); border: 1px solid #5c4a1e; border-radius: 7px; padding: 3px 8px; background: #1c150e; }
+    .bar { height: 5px; border-radius: 3px; background: #241a3e; overflow: hidden; margin-top: 6px; }
+    .bar i { display: block; height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--gold-deep), var(--gold)); }
+
+    /* ── Section scaffolding ─────────────────────────────── */
+    .sect { padding: 74px 0; }
+    .sect-head { text-align: center; max-width: 640px; margin: 0 auto 46px; }
+    .sect-head h2 { color: var(--text); font-size: 30px; font-weight: 700; margin-top: 14px; line-height: 1.25; }
+    .sect-head p { color: var(--dim); font-size: 15px; margin-top: 12px; }
+    .rule { border-top: 1px solid rgba(52, 33, 92, 0.45); }
+
+    /* How it works */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .step { background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 26px 24px; }
+    .step .n {
+      width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--gold); color: var(--gold); font-weight: 800; font-size: 16px; margin-bottom: 16px; font-family: var(--disp);
+    }
+    .step h3 { color: var(--text); font-size: 17px; margin-bottom: 8px; }
+    .step p { color: var(--dim); font-size: 14px; }
+    .step p b { color: var(--soft); }
+
+    /* Feature rows */
+    .feat { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: center; padding: 44px 0; }
+    .feat.rev .copy { order: 2; } .feat.rev .art { order: 1; }
+    .feat .copy .kicker { display: block; margin-bottom: 12px; }
+    .feat h3 { color: var(--text); font-size: 26px; line-height: 1.3; font-weight: 700; font-family: var(--disp); }
+    .feat h3 em { color: var(--gold); font-style: normal; }
+    .feat p { color: var(--soft); font-size: 15px; margin-top: 14px; }
+    .feat ul { list-style: none; margin-top: 16px; display: grid; gap: 9px; }
+    .feat li { color: var(--dim); font-size: 14px; padding-left: 26px; position: relative; }
+    .feat li::before { content: "✦"; color: var(--gold); position: absolute; left: 0; font-size: 12px; top: 2px; }
+    .feat li b { color: var(--soft); font-weight: 600; }
+    .feat .tag { display: inline-block; margin-left: 10px; vertical-align: 2px; font-size: 10px; letter-spacing: 1.6px; font-weight: 800; color: #0a0714; background: linear-gradient(180deg, #f6e2a8, #d6a94e); border-radius: 6px; padding: 3px 8px; font-family: var(--body); }
+
+    /* Secondary grid */
+    .more-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+    .more { background: var(--panel); border: 1px solid var(--border-soft); border-radius: 14px; padding: 20px 20px; }
+    .more h4 { color: var(--gold); font-size: 14.5px; margin-bottom: 6px; letter-spacing: 0.4px; }
+    .more p { color: var(--dim); font-size: 13.5px; }
+
+    /* Honesty */
+    .honest-panel {
+      background: linear-gradient(170deg, #1c1132, #140d24); border: 1px solid var(--border);
+      border-radius: 22px; padding: 40px 42px; max-width: 820px; margin: 0 auto;
+    }
+    .honest-panel .lead { color: var(--text); font-size: 18px; text-align: center; font-family: var(--disp); line-height: 1.5; }
+    .honest-panel ul { list-style: none; display: grid; gap: 14px; margin-top: 26px; }
+    .honest-panel li { color: var(--soft); font-size: 14.5px; padding-left: 30px; position: relative; }
+    .honest-panel li::before { content: "✓"; color: var(--good); position: absolute; left: 0; font-weight: 800; }
+    .honest-panel li b { color: var(--text); }
+
+    /* Pricing */
+    .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 860px; margin: 0 auto; align-items: stretch; }
+    .price { background: var(--panel); border: 1px solid var(--border-soft); border-radius: 20px; padding: 30px 28px; display: flex; flex-direction: column; }
+    .price.mythic { background: linear-gradient(170deg, #201538, #150e26); border: 1px solid #5c4a1e; box-shadow: 0 18px 60px rgba(232, 201, 122, 0.08); }
+    .price-name { font-size: 21px; letter-spacing: 2.5px; color: var(--soft); }
+    .price.mythic .price-name { color: var(--gold); }
+    .price .who { color: var(--dim); font-size: 13px; margin: 6px 0 18px; }
+    .price .cost { color: var(--text); font-size: 26px; font-weight: 800; margin-bottom: 4px; }
+    .price .cost small { color: var(--dim); font-size: 12.5px; font-weight: 400; letter-spacing: 0.4px; }
+    .price ul { list-style: none; display: grid; gap: 9px; margin-top: 16px; }
+    .price li { color: var(--soft); font-size: 13.5px; padding-left: 24px; position: relative; }
+    .price li::before { content: "✓"; color: var(--good); position: absolute; left: 0; font-weight: 700; }
+    .price.mythic li::before { color: var(--gold); }
+    .price .note { margin-top: auto; padding-top: 18px; color: var(--dim); font-size: 12px; }
+
+    /* FAQ */
+    .faq { max-width: 760px; margin: 0 auto; }
+    .faq details { background: var(--panel); border: 1px solid var(--border-soft); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
+    .faq summary { cursor: pointer; list-style: none; padding: 17px 20px; color: var(--text); font-size: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--gold); font-size: 20px; font-weight: 400; flex-shrink: 0; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq .a { padding: 0 20px 18px; color: var(--dim); font-size: 14px; }
+    .faq .a b { color: var(--soft); }
+
+    /* Final CTA */
+    .final {
+      text-align: center; border: 1px solid var(--border); border-radius: 26px; padding: 56px 30px;
+      background:
+        radial-gradient(500px 240px at 50% -60px, rgba(232, 201, 122, 0.12), transparent 70%),
+        linear-gradient(170deg, #1c1132, #120b22);
+      max-width: 860px; margin: 0 auto;
+    }
+    .final h2 { color: var(--text); font-size: 30px; font-weight: 700; }
+    .final p { color: var(--dim); font-size: 15px; margin: 12px auto 26px; max-width: 480px; }
+    .final .ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(52, 33, 92, 0.45); padding: 38px 0 50px; margin-top: 76px; }
+    footer .foot-links { display: flex; gap: 26px; flex-wrap: wrap; margin-bottom: 18px; }
+    footer .foot-links a { color: var(--purple-muted); font-size: 13px; text-decoration: none; }
+    footer .foot-links a:hover { color: var(--gold); }
+    footer .company { color: var(--purple-muted); font-size: 12.5px; margin-bottom: 8px; letter-spacing: 1px; }
+    footer .legal { color: #54447a; font-size: 12px; max-width: 780px; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; text-align: center; }
+      .hero .sub { margin: 0 auto; }
+      .hero .ctas, .hero .proof { justify-content: center; }
+      .hero h1 { font-size: 36px; }
+      .steps { grid-template-columns: 1fr; }
+      .feat { grid-template-columns: 1fr; gap: 30px; padding: 34px 0; }
+      .feat.rev .copy { order: 1; } .feat.rev .art { order: 2; }
+      .price-grid { grid-template-columns: 1fr; }
+      .sect { padding: 56px 0; }
+      .sect-head h2 { font-size: 25px; }
+    }
+    @media (max-width: 360px) { .phone { width: 260px; } }
+  </style>
 </head>
 <body>
-  <header>
+
+  <header class="site">
     <div class="wrap nav">
-      <img src="icon.png" alt="Arcane Ledger icon" />
+      <img src="icon.png" alt="" />
       <a class="brand" href="/">ARCANE LEDGER</a>
       <nav class="links">
-        <a href="#features">FEATURES</a>
-        <a href="support.html">SUPPORT</a>
-        <a href="https://discord.gg/sGwHY4HerY">DISCORD</a>
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a class="cta" href="https://discord.gg/sGwHY4HerY">JOIN THE DISCORD</a>
       </nav>
     </div>
   </header>
 
+  <!-- ── Hero ─────────────────────────────────────────────── -->
   <section class="hero wrap">
-    <img class="logo" src="icon.png" alt="Arcane Ledger" />
-    <h1>ARCANE LEDGER</h1>
-    <p class="tagline">Your Personal MTG Coach</p>
-    <p class="sub">Scan your cards in seconds, watch your collection's value, and find out which decks
-      you're already closer to building than you think — then get coached to the finish line.</p>
-    <div class="stores">
-      <div class="store-card">
-        <img class="qr" src="qr-play.png" alt="QR code — Google Play (coming soon)" />
-        <a class="store-badge" href="#features" aria-label="Google Play — coming soon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M4 2.5v19l10-9.5L4 2.5z" fill="#34a8fe"/>
-            <path d="M4 2.5l10 9.5 3.2-3L6.2 2.2C5.3 1.7 4.4 1.9 4 2.5z" fill="#5ee08a"/>
-            <path d="M4 21.5l10-9.5 3.2 3-11 6.8c-.9.5-1.8.3-2.2-.3z" fill="#fe4a5d"/>
-            <path d="M17.2 9l3.3 2c1 .6 1 1.4 0 2l-3.3 2-3.2-3 3.2-3z" fill="#ffd34e"/>
-          </svg>
-          <span><span class="small">GET IT ON</span><span class="big">Google Play</span></span>
-        </a>
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">Your Personal MTG Coach</span>
+        <h1>The app that tells you what you can <em>build</em> — not just what you own.</h1>
+        <p class="sub">Scan your Magic: The Gathering collection in minutes. Arcane Ledger shows you
+          every deck you're already close to finishing, finds the cheapest real way there — and keeps
+          watch over prices, bans, and reprints while you're away.</p>
+        <div class="ctas">
+          <a class="btn-gold" href="https://discord.gg/sGwHY4HerY">JOIN THE DISCORD →</a>
+          <span class="chip-soon" title="Launching soon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 2.5v19l10-9.5L4 2.5z" fill="#34a8fe"/>
+              <path d="M4 2.5l10 9.5 3.2-3L6.2 2.2C5.3 1.7 4.4 1.9 4 2.5z" fill="#5ee08a"/>
+              <path d="M4 21.5l10-9.5 3.2 3-11 6.8c-.9.5-1.8.3-2.2-.3z" fill="#fe4a5d"/>
+              <path d="M17.2 9l3.3 2c1 .6 1 1.4 0 2l-3.3 2-3.2-3 3.2-3z" fill="#ffd34e"/>
+            </svg>
+            Google Play — launching soon
+          </span>
+        </div>
+        <div class="proof">
+          <span><b>✓</b> Free unlimited scanning</span>
+          <span><b>✓</b> Works offline</span>
+          <span><b>✓</b> 10 languages</span>
+          <span><b>✓</b> Honest data — or silence</span>
+        </div>
       </div>
-      <div class="store-card">
-        <img class="qr" src="qr-appstore.png" alt="QR code — App Store (coming soon)" />
-        <a class="store-badge" href="#features" aria-label="App Store — coming soon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path fill="#ffffff" d="M16.6 12.9c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.7 0-1.7-.8-2.8-.7-1.4 0-2.8.8-3.5 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.5 2.2 2.6 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.2 1.2-2.4 1.2-2.4s-2.3-.9-2.4-3.7zM14.5 6.7c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/>
-          </svg>
-          <span><span class="small">Download on the</span><span class="big">App Store</span></span>
-        </a>
+
+      <div class="art" aria-hidden="true">
+        <div class="phone">
+          <div class="screen">
+            <div class="statusbar"><span>9:41</span><span>▲ ● ▮</span></div>
+            <div class="app-title">ARCANE LEDGER</div>
+            <div class="app-sub">YOUR PERSONAL MTG COACH</div>
+            <div class="mcard m-gold">
+              <span class="lbl">MOXI NOTICED</span>
+              <div class="big">Splinter Twin was just unbanned in Modern — you own 2</div>
+              <div class="small">unbans often move the price · tap to ask Moxi</div>
+            </div>
+            <div class="mcard">
+              <div class="ringrow">
+                <div class="ring" style="background: conic-gradient(var(--gold) 331deg, #241a3e 0);"><span>92%</span></div>
+                <div>
+                  <span class="lbl" style="color: var(--purple);">CLOSEST DECK</span>
+                  <div class="big">3 key cards from Boros Aggro</div>
+                  <div class="small">tap to see exactly what you need →</div>
+                </div>
+              </div>
+            </div>
+            <div class="mcard m-notice">
+              <span class="lbl">NEW-SET RADAR</span>
+              <div class="big">The Hobbit — releases Aug 14</div>
+              <div class="small">2 on your wishlist · 13 in your colors</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <p class="stores-note">LAUNCHING SOON ON BOTH STORES — until then the QR codes visit this site</p>
   </section>
 
-  <section id="features" class="features wrap">
-    <h2>WHAT IT DOES</h2>
-    <div class="grid">
-      <div class="card">
-        <span class="k">SCAN</span>
-        <h3>Card Scanner</h3>
-        <p>Point your camera at a card and it's in your ledger — instant on-device recognition, online or off.
-           It identifies the exact printing you own on most cards — set, collector number, foils detected
-           automatically — with a one-tap picker for the rare miss. Mythic adds hands-free auto-scan for
-           whole stacks, plus an AI image-match that reads the printing when a card's number is too worn to see.</p>
+  <!-- ── How it works ─────────────────────────────────────── -->
+  <section id="how" class="sect rule">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="kicker">How it works</span>
+        <h2>From shoebox to game night in three steps</h2>
       </div>
-      <div class="card">
-        <span class="k">BUILD</span>
-        <h3>Deck Brain</h3>
-        <p>Your collection, measured against a living library of real archetypes across Commander, Modern,
-           Pioneer, Legacy, and Pauper — kept current monthly from real-world data: tournament decklists for
-           the constructed formats, and EDHREC deck-building data for Commander. See every deck's
-           completion %, what's missing, and what it costs to finish — then build it your way: the original
-           printings, or the <strong>cheapest path</strong> as a real shopping list, with honest prices,
-           never made-up numbers.</p>
-      </div>
-      <div class="card">
-        <span class="k">IMPORT</span>
-        <h3>Bring Your Decks &amp; Collection</h3>
-        <p>Paste a deck link (URL) — or a plain list — and your deck lands with the <strong>exact
-           printings and finishes you chose</strong>, foils and all, not generic stand-ins. The original
-           builder is always credited, and you can fork any import into a deck you're free to edit.
-           Coming from another app? Drop in a <strong>CSV of your whole collection</strong> — paste it or
-           pick the file — and it lands right in your binder.</p>
-      </div>
-      <div class="card">
-        <span class="k">DISCOVER</span>
-        <h3>Community Decks</h3>
-        <p>Browse decks real players built and shared — filter by format, sort by what's popular, and find
-           moderator-approved and Official picks. Submit your own in a tap; every shared deck credits its
-           original creator.</p>
-      </div>
-      <div class="card">
-        <span class="k">ASK</span>
-        <h3>Moxi — AI Deck Advisor</h3>
-        <p>A rules-savvy MTG advisor grounded in real card text. Get deck advice tuned to the cards you
-           actually own, and reason through tricky rules interactions — working from the real card text,
-           and honest when it's not sure.</p>
-      </div>
-      <div class="card">
-        <span class="k">KNOW</span>
-        <h3>Why a Card Matters</h3>
-        <p>An honest read on any card: how it actually plays — the archetypes it defines and how often it
-           sees play, from real deck data — kept deliberately <strong>separate from its price</strong>, so a
-           pricey card is never mistaken for a powerful one.</p>
-      </div>
-      <div class="card">
-        <span class="k">ODDS</span>
-        <h3>Deck Odds</h3>
-        <p>Play the percentages: mathematically-proven draw odds, an opening-hand simulator, and a read on
-           how fast a deck can close — turn a hunch into a number before game night.</p>
-      </div>
-      <div class="card">
-        <span class="k">TRACK</span>
-        <h3>Collection Value</h3>
-        <p>Live market pricing with history charts, gainers and losers, price alerts, and multi-store
-           comparison — know what your binder is really worth.</p>
-      </div>
-      <div class="card">
-        <span class="k">PLAY</span>
-        <h3>Playgroup &amp; Game Table</h3>
-        <p>Add friends, message your group, match trades, and get told the moment you and a friend can
-           build a deck together tonight. Life counters, commander damage, dice and coin flips for
-           game night.</p>
-      </div>
-      <div class="card">
-        <span class="k">PLANS</span>
-        <h3>Explorer &amp; Mythic</h3>
-        <p><strong>Explorer is free forever</strong> — unlimited collection tracking and scanning.
-           <strong>Mythic</strong> is the optional paid upgrade that adds the intelligence:
-           exact-printing scans, missing-card lists with cost-to-finish, the cheapest-path shopping list,
-           honest card insights, unlimited Moxi, and New-Set Radar — what's on your wishlist and in your
-           colors the moment a new set drops.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <h3>Scan your cards</h3>
+          <p>Point your camera at a card and it's in your binder — <b>instant, on-device, free, and
+            unlimited</b>. It recognizes the exact printing you own on most cards: set, collector
+            number, even foils.</p>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <h3>See what you can build</h3>
+          <p>Your collection is measured against a living library of <b>real archetypes</b> — kept
+            current monthly from tournament results and Commander data. Every deck shows its
+            completion % and exactly what's missing.</p>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <h3>Get coached to the finish</h3>
+          <p>Pick a deck and the app charts the <b>cheapest real path</b> to finish it — an honest
+            shopping list with live prices, never invented numbers. Then track it, play it, and
+            watch it grow.</p>
+        </div>
       </div>
     </div>
-    <p class="stores-note">Plays in 10 languages — English, Spanish, French, German, Italian, Portuguese,
-      Japanese, Korean &amp; Chinese — online or off.</p>
   </section>
 
-  <section class="section honest wrap">
-    <h2>HONEST BY DESIGN</h2>
-    <div class="panel">
-      <p class="lead">In a hobby full of hype, we'd rather tell you the truth — even when a flashier lie
-        would look better.</p>
-      <ul>
-        <li><strong>Real prices only.</strong> The cheapest-build shopping list shows a cheaper printing
-          only when one truly exists — we never invent a number to look helpful.</li>
-        <li><strong>Playability kept separate from price.</strong> A card's cost never stands in for how
-          good it is, so an expensive card is never dressed up as a powerful one.</li>
-        <li><strong>Moxi won't bluff.</strong> The AI answers from real card text and tells you when it
-          doesn't know, instead of making up a ruling.</li>
-        <li><strong>The exact card you own.</strong> Scans and imports keep the real printing and finish —
-          not generic stand-ins.</li>
-        <li><strong>Your data, on your device.</strong> Scanning works on-device and offline; prices are
-          clearly labeled as third-party estimates.</li>
-      </ul>
+  <!-- ── Feature: Deck Brain ──────────────────────────────── -->
+  <section id="features" class="sect rule">
+    <div class="wrap">
+
+      <div class="feat">
+        <div class="copy">
+          <span class="kicker">Deck Brain</span>
+          <h3>Every deck you're <em>already close</em> to building</h3>
+          <p>Most collection apps stop at "here's what you own." Arcane Ledger answers the question
+            you actually have: <b>what can I make of it?</b></p>
+          <ul>
+            <li><b>Completion % for hundreds of real archetypes</b> across Commander, Modern, Pioneer, Legacy, and Pauper</li>
+            <li><b>Missing-card lists with cost-to-finish</b> — and a cheapest-printing shopping list</li>
+            <li><b>Import your decks</b> by link or paste — they arrive with the exact printings and finishes you chose</li>
+            <li><b>Community decks</b> from real players, every one crediting its original builder</li>
+          </ul>
+        </div>
+        <div class="art" aria-hidden="true">
+          <div class="phone">
+            <div class="screen">
+              <div class="statusbar"><span>9:41</span><span>▲ ● ▮</span></div>
+              <div class="app-title" style="font-size: 12px;">DECK BRAIN</div>
+              <div class="app-sub">WHAT YOU CAN BUILD</div>
+              <div class="mcard">
+                <div class="ringrow">
+                  <div class="ring" style="background: conic-gradient(var(--good) 331deg, #241a3e 0); color: var(--good);"><span>92%</span></div>
+                  <div>
+                    <div class="big">Boros Aggro</div>
+                    <div class="small">3 cards missing · $12.40 to finish</div>
+                    <div class="bar"><i style="width: 92%;"></i></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mcard">
+                <div class="ringrow">
+                  <div class="ring" style="background: conic-gradient(var(--gold) 230deg, #241a3e 0);"><span>64%</span></div>
+                  <div>
+                    <div class="big">Azorius Control</div>
+                    <div class="small">14 cards missing · cheapest build ready</div>
+                    <div class="bar"><i style="width: 64%;"></i></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mcard">
+                <div class="ringrow">
+                  <div class="ring" style="background: conic-gradient(var(--purple) 148deg, #241a3e 0); color: var(--purple);"><span>41%</span></div>
+                  <div>
+                    <div class="big">Golgari Midrange</div>
+                    <div class="small">tap for the full missing list →</div>
+                    <div class="bar"><i style="width: 41%; background: var(--purple);"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Feature: Moxi ─────────────────────────────────── -->
+      <div class="feat rev">
+        <div class="copy">
+          <span class="kicker">Moxi — AI Deck Advisor</span>
+          <h3>Advice grounded in <em>your</em> cards — and real card text</h3>
+          <p>Moxi knows every card you own, answers rules questions from the actual card text, and
+            proposes deck changes you approve with a tap — <b>it never touches your decks on its
+            own.</b></p>
+          <ul>
+            <li><b>Build a deck from cards you already own</b> — free, in any format</li>
+            <li><b>Upgrade a deck or judge a trade</b> with honest, app-computed numbers</li>
+            <li><b>Rules questions answered from real card text</b> — and it says so when it isn't sure</li>
+            <li><b>Every change is propose-then-confirm</b> — you always see the preview first</li>
+          </ul>
+        </div>
+        <div class="art" aria-hidden="true">
+          <div class="phone">
+            <div class="screen">
+              <div class="statusbar"><span>9:41</span><span>▲ ● ▮</span></div>
+              <div class="app-title" style="font-size: 12px;">MOXI</div>
+              <div class="app-sub">PERSONAL DECK ADVISOR</div>
+              <div class="chatrow chat-user">Can I finish a burn deck with what I own?</div>
+              <div class="chatrow chat-moxi"><span class="who">MOXI</span>Close — you're 4 cards short. You own 18 of the core 22, and the cheapest real path to the rest is about $11.
+                Want me to line it up as a deck?</div>
+              <div class="chatrow chat-moxi" style="padding-top: 8px;">
+                <span class="who">PROPOSED — YOU CONFIRM</span>
+                <div class="chips"><i>Save this deck</i><i>Show the 4 cards</i><i>Cheapest printings</i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Feature: The Watcher ──────────────────────────── -->
+      <div class="feat">
+        <div class="copy">
+          <span class="kicker">The Watcher <span class="tag">MYTHIC</span></span>
+          <h3>Your app checks on your cards <em>so you don't have to</em></h3>
+          <p>Magic never sits still — bans drop, prices spike, reprints land. Arcane Ledger notices
+            what changed <b>for the cards you actually own</b> and taps you on the shoulder.</p>
+          <ul>
+            <li><b>Ban &amp; unban alerts</b> for the decks you keep — including the good news</li>
+            <li><b>Price-spike alerts</b> on cards you own, and spare copies worth trading away</li>
+            <li><b>Reprint warnings</b> for your wishlist — buy in the cheap window</li>
+            <li><b>A weekly pulse and a monthly report</b> of what your collection did</li>
+            <li><b>New-Set Radar</b> — what's in your colors the moment a set drops</li>
+          </ul>
+        </div>
+        <div class="art" aria-hidden="true">
+          <div class="phone">
+            <div class="screen">
+              <div class="statusbar"><span>9:41</span><span>▲ ● ▮</span></div>
+              <div class="app-title" style="font-size: 12px;">MOXI NOTICED</div>
+              <div class="app-sub">WHILE YOU WERE AWAY</div>
+              <div class="mcard m-red">
+                <span class="lbl">LEGALITY</span>
+                <div class="big">A card in "RW Aggro" was just banned in Modern</div>
+                <div class="small">tap to fix it with Moxi →</div>
+              </div>
+              <div class="mcard m-gold">
+                <span class="lbl">PRICE SPIKE</span>
+                <div class="big">Your spare copy is up $9 this week</div>
+                <div class="small">you own 3 — a good time to trade one away</div>
+              </div>
+              <div class="mcard m-notice">
+                <span class="lbl">REPRINT</span>
+                <div class="big">A wishlist card was just reprinted</div>
+                <div class="small">reprints usually push the price down</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── More in the box ──────────────────────────────────── -->
+  <section class="sect rule">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="kicker">And the rest of the table</span>
+        <h2>Everything else in the box</h2>
+      </div>
+      <div class="more-grid">
+        <div class="more"><h4>Exact-printing scanner</h4><p>On-device recognition that reads the set and collector number right off the card — foils detected automatically. Mythic adds hands-free auto-scan for whole stacks.</p></div>
+        <div class="more"><h4>Collection value</h4><p>Daily market pricing with history charts, gainers &amp; losers, price alerts, and multi-store comparison — know what your binder is really worth.</p></div>
+        <div class="more"><h4>Bring everything with you</h4><p>Import your whole collection from a CSV — paste it or pick the file — and decks by link or plain text, exact printings intact.</p></div>
+        <div class="more"><h4>Deck Odds</h4><p>Mathematically-proven draw odds and an opening-hand simulator — turn a hunch into a number before game night.</p></div>
+        <div class="more"><h4>Playgroup &amp; Game Table</h4><p>Add friends, message your group, get matched on trades — plus life counters, commander damage, dice and coin flips at the table.</p></div>
+        <div class="more"><h4>New to Magic?</h4><p>A built-in crash course, a playstyle quiz, and Moxi to pick your first budget deck — the app teaches the game, not just the tracking.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Honest by design ─────────────────────────────────── -->
+  <section class="sect rule">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="kicker">Why players trust it</span>
+        <h2>Honest by design</h2>
+      </div>
+      <div class="honest-panel">
+        <p class="lead">In a hobby full of hype, we'd rather tell you the truth —<br />even when a flashier lie would look better.</p>
+        <ul>
+          <li><b>Real prices only.</b> The cheapest-build list shows a cheaper printing only when one truly exists — we never invent a number to look helpful.</li>
+          <li><b>Playability kept separate from price.</b> A card's cost never stands in for how good it is, so an expensive card is never dressed up as a powerful one.</li>
+          <li><b>Moxi won't bluff.</b> The AI answers from real card text and tells you when it doesn't know, instead of making up a ruling.</li>
+          <li><b>The exact card you own.</b> Scans and imports keep the real printing and finish — not generic stand-ins.</li>
+          <li><b>Silence over guesses.</b> When the data can't back a claim — an alert, a stat, a delta — the app says nothing rather than making something up.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ──────────────────────────────────────────── -->
+  <section id="pricing" class="sect rule">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="kicker">Pricing</span>
+        <h2>Free to track everything.<br />Mythic when you want the intelligence.</h2>
+      </div>
+      <div class="price-grid">
+        <div class="price">
+          <div class="price-name">EXPLORER</div>
+          <div class="who">For every collector</div>
+          <div class="cost">Free <small>forever</small></div>
+          <ul>
+            <li>Unlimited collection tracking &amp; binders</li>
+            <li>Free unlimited card scanning</li>
+            <li>Deck completion % for every archetype</li>
+            <li>Build decks from your cards with Moxi</li>
+            <li>Import decks &amp; collection (names, sets &amp; counts)</li>
+            <li>Playgroup, Game Table &amp; community decks</li>
+          </ul>
+          <p class="note">No card caps. No scan caps. Really.</p>
+        </div>
+        <div class="price mythic">
+          <div class="price-name">MYTHIC</div>
+          <div class="who">For players who want the edge</div>
+          <div class="cost">Founder's pricing at launch <small>· lock it in early</small></div>
+          <ul>
+            <li>Everything in Explorer</li>
+            <li>The Watcher: ban/unban, price-spike &amp; reprint alerts</li>
+            <li>Missing-card lists, cost-to-finish &amp; cheapest-path shopping</li>
+            <li>Moxi deck upgrades &amp; trade judgment</li>
+            <li>Hands-free auto-scan + AI printing match</li>
+            <li>New-Set Radar, honest card insights &amp; monthly report</li>
+            <li>Rich imports: exact printing, condition, foil &amp; price paid</li>
+          </ul>
+          <p class="note">Early subscribers keep their founder's price.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────────── -->
+  <section id="faq" class="sect rule">
+    <div class="wrap">
+      <div class="sect-head">
+        <span class="kicker">Questions</span>
+        <h2>Fair questions, straight answers</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>When does it launch?</summary>
+          <div class="a">Soon, on <b>Google Play first</b> (iOS follows). The honest answer: it launches when it's genuinely ready rather than on a date we'd have to force. Join the <a href="https://discord.gg/sGwHY4HerY">Discord</a> to be first in — early community members are how we test and shape it.</div>
+        </details>
+        <details>
+          <summary>Is scanning really free and unlimited?</summary>
+          <div class="a"><b>Yes.</b> Tap-to-scan, unlimited cards, unlimited binders, free forever. Mythic adds convenience and intelligence on top (hands-free auto-scan, the Watcher, cost-to-finish) — it never takes the tracker away.</div>
+        </details>
+        <details>
+          <summary>Does it work offline?</summary>
+          <div class="a">Scanning recognizes cards <b>on your device</b>, so it works with no connection. Prices, legality updates, and Moxi need the internet — they refresh when you're back online.</div>
+        </details>
+        <details>
+          <summary>What makes it different from other collection apps?</summary>
+          <div class="a">Two things. It leads with <b>what you can build</b> — completion % against real archetypes, not just a list of what you own. And it's <b>honest by design</b>: real prices or nothing, playability kept separate from price, and an AI that says "I'm not sure" instead of bluffing.</div>
+        </details>
+        <details>
+          <summary>I've never played Magic. Is this for me?</summary>
+          <div class="a">Genuinely, yes. There's a built-in <b>"I'm new to Magic" path</b>: a five-minute crash course on how the game works, a quiz that finds your playstyle, and Moxi to suggest a first budget deck — no cards needed to start.</div>
+        </details>
+        <details>
+          <summary>Is my collection private?</summary>
+          <div class="a">Your collection lives <b>on your device</b>, with optional account backup so you can restore it on a new phone. We don't sell your data. Prices are clearly labeled third-party estimates. Details in the <a href="privacy.html">privacy policy</a>.</div>
+        </details>
+        <details>
+          <summary>What languages does it speak?</summary>
+          <div class="a">Ten: English, Spanish, French, German, Italian, Portuguese, Japanese, Korean, and both Simplified and Traditional Chinese — using the official localized Magic terms players see on their printed cards.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Final CTA ────────────────────────────────────────── -->
+  <section class="sect">
+    <div class="wrap">
+      <div class="final">
+        <h2>Be there on day one</h2>
+        <p>Launching soon on Google Play. Join the Discord for early access, launch news,
+          and a say in what gets built next.</p>
+        <div class="ctas">
+          <a class="btn-gold" href="https://discord.gg/sGwHY4HerY">JOIN THE DISCORD →</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -170,8 +632,10 @@
       <p class="legal">Arcane Ledger is not affiliated with, endorsed, sponsored, or approved by Wizards of the
         Coast LLC. Magic: The Gathering, its logos, card names, and card images are trademarks and copyrights of
         Wizards of the Coast LLC. Card data and images are provided by Scryfall. Prices shown in the app are
-        estimates from third-party market data and are not offers to buy or sell.</p>
+        estimates from third-party market data and are not offers to buy or sell. App screens shown are
+        illustrative renders of real app features.</p>
     </div>
   </footer>
+
 </body>
 </html>
