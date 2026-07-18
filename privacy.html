@@ -23,7 +23,7 @@
 
   <main class="page wrap">
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective June 14, 2026 · Arcane Ledger is made by TCGora</p>
+    <p class="updated">Effective July 18, 2026 · Arcane Ledger is made by TCGora</p>
 
     <p>This policy explains what information the Arcane Ledger app collects, why, and what happens to it.
        The short version: we collect what the app needs to work, we don't run ads, and we never sell your
@@ -65,6 +65,10 @@
           to prevent repeat-trial abuse.</li>
       <li><strong>Card data requests.</strong> Card information and prices come from Scryfall's public API;
           those requests carry standard technical information (like any web request) but no account data.</li>
+      <li><strong>Usage events.</strong> The app records basic usage events (for example, that the app was
+          opened or a deck was generated) with your app version and platform, so we can tell which features
+          are working. These are tied to your account, never sold or used for advertising, deleted
+          automatically after 180 days, and deleted immediately when you delete your account.</li>
     </ul>
 
     <h2>Purchases</h2>
@@ -82,7 +86,8 @@
 
     <h2>Data retention &amp; deletion</h2>
     <p>Your data is kept while your account is active. You can clear your collection in the app at any time
-       (Settings → Account &amp; Backup).</p>
+       (Settings → Account &amp; Backup). Usage events are automatically deleted after 180 days regardless
+       of account status.</p>
 
     <h2 id="delete-account">Delete your account &amp; data</h2>
     <div class="panel">
@@ -109,7 +114,8 @@
     <h2>Service providers</h2>
     <p>We use Supabase (accounts, data storage, messaging), Google Play and the Apple App Store (billing),
        RevenueCat (subscription management), Expo with Google Firebase Cloud Messaging (app delivery and
-       push notifications), Anthropic (AI responses), Ximilar (premium card-image identification), and
+       push notifications), Anthropic (AI responses), Ximilar (premium card-image identification),
+       Resend (delivery of account emails such as password resets), and
        Scryfall (card data and images). Each receives only what its job requires.</p>
 
     <h2>Changes</h2>
