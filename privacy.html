@@ -23,7 +23,7 @@
 
   <main class="page wrap">
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective July 18, 2026 · Arcane Ledger is made by TCGora</p>
+    <p class="updated">Effective July 30, 2026 · Arcane Ledger is made by TCGora</p>
 
     <p>This policy explains what information the Arcane Ledger app collects, why, and what happens to it.
        The short version: we collect what the app needs to work, we don't run ads, and we never sell your
@@ -47,10 +47,12 @@
 
     <h2>Card scanning</h2>
     <p>Card recognition runs <strong>on your device</strong> by default. Camera frames are read locally and
-       are not uploaded. If you use premium exact-printing matching, a resized image of the card being
-       scanned is sent to our image-recognition partner (Ximilar) solely to identify the exact printing.
-       Ximilar processes the image to return a result and does not store it, and neither we nor Ximilar use
-       your scans to train models. We don't keep the image either &mdash; it's deleted right after the scan.</p>
+       are not uploaded. A resized image of the card being scanned is sent to our image-recognition partner
+       (Ximilar) in exactly two cases: when premium exact-printing matching refines a scan, and when you tap
+       the photo-identification option on a card the on-device reader couldn't make out (available on every
+       tier, with a daily limit). In both cases Ximilar processes the image solely to return a result and
+       does not store it, and neither we nor Ximilar use your scans to train models. We don't keep the image
+       either &mdash; it's deleted right after the scan.</p>
 
     <h2>Rue (AI advisor)</h2>
     <p>When you chat with Rue, your messages are processed by our AI provider (Anthropic) to generate the
@@ -114,7 +116,7 @@
     <h2>Service providers</h2>
     <p>We use Supabase (accounts, data storage, messaging), Google Play and the Apple App Store (billing),
        RevenueCat (subscription management), Expo with Google Firebase Cloud Messaging (app delivery and
-       push notifications), Anthropic (AI responses), Ximilar (premium card-image identification),
+       push notifications), Anthropic (AI responses), Ximilar (card-image identification),
        Resend (delivery of account emails such as password resets), and
        Scryfall (card data and images). Each receives only what its job requires.</p>
 
