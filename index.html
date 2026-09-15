@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- ⭐ STORE STATE, ONE WORD: class="play-soon" shows "Coming to Google Play"; change it to class="play-live"
+     the day https://play.google.com/store/apps/details?id=com.arcaneledger.app stops returning 404, and every
+     store button on the page becomes a working Google Play link. (2026-09-12: Chris released 1.7.0 in the Play
+     Console, the public listing still 404s, so the page says coming, not available.) -->
+<html lang="en" class="play-soon">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0a0714" />
   <title>Arcane Ledger | You own more decks than you think</title>
-  <meta name="description" content="You own more decks than you think. Scan your Magic: The Gathering collection once — Arcane Ledger finds the decks you're a few cards from finishing, the combos already sitting in your binder, and the commanders that fit what you actually have. Free unlimited tap scanning. Launching soon on Google Play and the App Store." />
+  <meta name="description" content="You own more decks than you think. Scan your Magic: The Gathering collection once and Arcane Ledger finds the decks whose key cards you mostly own, the combos already sitting in your binder, and the commanders that fit what you actually have. Free unlimited tap scanning. Coming to Google Play first, then the App Store." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="canonical" href="https://arcaneledger.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Arcane Ledger | You own more decks than you think" />
-  <meta property="og:description" content="Scan your collection once. Arcane Ledger finds the decks you're a few cards from finishing, the combos already sitting in your binder, and the commanders that fit what you actually have." />
+  <meta property="og:description" content="Scan your collection once. Arcane Ledger finds the decks whose key cards you mostly own, the combos already sitting in your binder, and the commanders that fit what you actually have." />
   <meta property="og:url" content="https://arcaneledger.app/" />
   <meta property="og:image" content="https://arcaneledger.app/icon.png" />
   <meta name="twitter:card" content="summary" />
@@ -229,7 +233,7 @@
     .price.mythic .price-name { color: var(--gold); }
     .price .who { color: var(--dim); font-size: 13px; margin: 6px 0 18px; }
     .price .cost { color: var(--text); font-size: 26px; font-weight: 800; margin-bottom: 4px; }
-    .price .cost small { color: var(--dim); font-size: 12.5px; font-weight: 400; letter-spacing: 0.4px; }
+    .price .cost small { display: block; color: var(--dim); font-size: 12.5px; font-weight: 400; letter-spacing: 0.4px; }
     .price ul { list-style: none; display: grid; gap: 9px; margin-top: 16px; }
     .price li { color: var(--soft); font-size: 13.5px; padding-left: 24px; position: relative; }
     .price li::before { content: "✓"; color: var(--good); position: absolute; left: 0; font-weight: 700; }
@@ -280,6 +284,18 @@
       .sect-head h2 { font-size: 25px; }
     }
     @media (max-width: 360px) { .phone { width: 260px; } }
+
+    /* ── Store state (see the comment above <html>) ─────────── */
+    .play-soon .when-live { display: none !important; }
+    .play-live .when-soon { display: none !important; }
+    .btn-play {
+      display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+      background: #0d0918; color: var(--text); border: 1px solid var(--border);
+      padding: 13px 22px; border-radius: 14px; font-size: 13.5px; letter-spacing: 0.4px; font-weight: 600;
+    }
+    .btn-play:hover { border-color: var(--gold); }
+    .btn-play svg { width: 20px; height: 20px; }
+    .btn-play small { display: block; color: var(--dim); font-size: 10.5px; font-weight: 400; letter-spacing: 0.8px; }
   </style>
 </head>
 <body>
@@ -304,22 +320,34 @@
       <div>
         <span class="kicker">Your Personal Magic Coach</span>
         <h1>You own more decks than you think.</h1>
-        <p class="sub">Scan your collection once. Arcane Ledger finds the decks you're a few cards
-          from finishing, the combos already sitting in your binder, and the commanders that fit
-          what you actually have. Free to start — seven days of Curator, no card required.</p>
+        <p class="sub">Scan your collection once. Arcane Ledger finds the decks whose key cards you
+          mostly own, the combos already sitting in your binder, and the commanders that fit what
+          you actually have. Free to start. Curator comes with a 7-day free trial, cancel anytime.</p>
         <div class="ctas">
-          <a class="btn-gold" href="https://discord.gg/G9EgSVWdPP">JOIN THE DISCORD →</a>
-          <span class="chip-soon" title="Launching soon">
+          <a class="btn-play when-live" href="https://play.google.com/store/apps/details?id=com.arcaneledger.app">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M4 2.5v19l10-9.5L4 2.5z" fill="#34a8fe"/>
               <path d="M4 2.5l10 9.5 3.2-3L6.2 2.2C5.3 1.7 4.4 1.9 4 2.5z" fill="#5ee08a"/>
               <path d="M4 21.5l10-9.5 3.2 3-11 6.8c-.9.5-1.8.3-2.2-.3z" fill="#fe4a5d"/>
               <path d="M17.2 9l3.3 2c1 .6 1 1.4 0 2l-3.3 2-3.2-3 3.2-3z" fill="#ffd34e"/>
             </svg>
+            <span><small>GET IT ON</small>Google Play</span>
+          </a>
+          <a class="btn-gold" href="https://discord.gg/G9EgSVWdPP">JOIN THE DISCORD →</a>
+          <span class="chip-soon when-soon" title="Coming to Google Play">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 2.5v19l10-9.5L4 2.5z" fill="#34a8fe"/>
+              <path d="M4 2.5l10 9.5 3.2-3L6.2 2.2C5.3 1.7 4.4 1.9 4 2.5z" fill="#5ee08a"/>
+              <path d="M4 21.5l10-9.5 3.2 3-11 6.8c-.9.5-1.8.3-2.2-.3z" fill="#fe4a5d"/>
+              <path d="M17.2 9l3.3 2c1 .6 1 1.4 0 2l-3.3 2-3.2-3 3.2-3z" fill="#ffd34e"/>
+            </svg>
+            Coming to Google Play, then the App Store
+          </span>
+          <span class="chip-soon when-live">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path fill="#e6e0f0" d="M16.6 12.9c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.7 0-1.7-.8-2.8-.7-1.4 0-2.8.8-3.5 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.5 2.2 2.6 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.2 1.2-2.4 1.2-2.4s-2.3-.9-2.4-3.7zM14.5 6.7c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/>
             </svg>
-            Launching soon on Google Play and the App Store
+            App Store coming later
           </span>
         </div>
         <div class="proof">
@@ -338,27 +366,27 @@
               <svg width="52" height="12" viewBox="0 0 52 12" aria-hidden="true"><g fill="#6b5896"><rect x="0" y="7.5" width="2.6" height="3.5" rx="0.8"/><rect x="4.2" y="5.5" width="2.6" height="5.5" rx="0.8"/><rect x="8.4" y="3.5" width="2.6" height="7.5" rx="0.8"/><rect x="12.6" y="1.5" width="2.6" height="9.5" rx="0.8"/><path d="M29.8 4.1a7.4 7.4 0 0 0-8.6 0l1.3 1.7a5.3 5.3 0 0 1 6 0l1.3-1.7z"/><path d="M28 6.5a4.4 4.4 0 0 0-5 0l1.2 1.6a2.4 2.4 0 0 1 2.6 0L28 6.5z"/><circle cx="25.5" cy="9.6" r="1.2"/></g><rect x="36.5" y="2" width="12" height="8" rx="2.4" fill="none" stroke="#6b5896" stroke-width="1"/><rect x="38.1" y="3.6" width="7" height="4.8" rx="1.2" fill="#6b5896"/><rect x="49.6" y="4.4" width="1.6" height="3.2" rx="0.8" fill="#6b5896"/></svg>
             </div>
             <div class="app-title">ARCANE LEDGER</div>
-            <div class="app-sub">YOUR PERSONAL MTG COACH</div>
+            <div class="app-sub">YOUR PERSONAL MAGIC COACH</div>
             <div class="qrow"><i>Ask Rue</i><i>Learn to Play</i><i>Game Table</i></div>
             <div class="mcard m-gold">
               <span class="lbl">RUE NOTICED</span>
               <div class="big">Splinter Twin was just unbanned in Modern. You own 2</div>
-              <div class="small">unbans often move the price · tap to ask Rue</div>
+              <div class="small">tap to ask Rue what it means</div>
             </div>
             <div class="mcard">
               <div class="ringrow">
-                <div class="ring" style="background: conic-gradient(var(--gold) 331deg, #241a3e 0);"><span>92%</span></div>
+                <div class="ring" style="background: conic-gradient(var(--gold) 283deg, #241a3e 0);"><span>11/14</span></div>
                 <div>
                   <span class="lbl" style="color: var(--purple);">CLOSEST DECK</span>
                   <div class="big">3 key cards from Boros Aggro</div>
-                  <div class="small">tap to see exactly what you need →</div>
+                  <div class="small">counting only copies no other deck has claimed</div>
                 </div>
               </div>
             </div>
             <div class="mcard m-notice">
               <span class="lbl">NEW-SET RADAR</span>
-              <div class="big">The Hobbit releases Aug 14</div>
-              <div class="small">2 on your wishlist · 13 in your colors</div>
+              <div class="big">A new set has 13 cards in your colors</div>
+              <div class="small">2 on your wishlist · tap to see them</div>
             </div>
             <div class="gbar"><i></i></div>
           </div>
@@ -379,16 +407,21 @@
           work who quit. The pile from that collection you bought off Facebook and never sorted.<br />
           <b>Point your phone at it.</b></p>
         <ul>
-          <li><b>Recognition runs on the phone itself</b>, against over 35,000 cards stored offline —
-            no signal needed, works in a garage. Tap through one at a time, or go hands-free and just
+          <li><b>Recognition runs on the phone itself</b>, against over 35,000 cards stored offline.
+            No signal needed, it works in a garage. Tap through one at a time, or go hands-free and just
             feed it cards. Proxies count too: flip on Proxy mode and they track at $0, clearly
             marked.</li>
           <li><b>When it isn't sure, it asks.</b> You get a shortlist, not a wrong card quietly filed
-            in your collection. When hands-free mode refuses a card, you hear it and you see it —
-            nothing vanishes without telling you.</li>
-          <li><b>And for the ones nothing can read</b> — the showcase frames, the borderless
-            alt-arts, the card that lived in a jeans pocket — photo rescue takes over and identifies
-            it from the image.</li>
+            in your collection. When hands-free mode refuses a card, you hear it and you see it.
+            Nothing vanishes without telling you.</li>
+          <li><b>And for the ones nothing can read</b>, the showcase frames, the borderless
+            alt-arts, the card that lived in a jeans pocket, tap photo rescue and it tries to
+            identify the card from the image. There's a daily allowance on both plans, and it needs a
+            connection.</li>
+          <li><b>Already took a picture of it?</b> Import the photo from your phone and the scanner
+            reads it like a live scan.</li>
+          <li><b>Just Looking.</b> Scan a card to see what it is, what it's worth and where it's
+            played, without adding it to anything. Keep it only if you want it.</li>
         </ul>
         <p class="lead"><b>Doing this once?</b> The Attic Pass is $7.99, one time, for thirty days of
           hands-free scanning and full-detail import. Not a subscription.</p>
@@ -407,14 +440,15 @@
           <p>Arcane Ledger doesn't start you from an empty list and a search bar. It starts
             from the cards you own and <b>works backwards.</b></p>
           <ul>
-            <li><b>You're four cards away.</b> Closest deck shows the archetype you're nearest to finishing and names what's missing. Copies already committed to another deck don't get counted twice — what you see is what you can actually sleeve up tonight.</li>
+            <li><b>You're four key cards away.</b> Closest deck shows the archetype whose key cards you're nearest to owning and names what's missing. Copies already committed to another deck don't get counted twice, so what you see counts only copies you can actually pull for it tonight.</li>
             <li><b>You already have combos.</b> Checked against over 96,000 known Commander combos. What's assembled right now, what's one card short, and which card that is.</li>
-            <li><b>Search any commander in the game.</b> The 1,300-plus with real decklist data behind them get ranked against what you own — a ranking earned from real decks, and when a commander doesn't have enough data yet, the app says so instead of guessing.</li>
+            <li><b>Search any commander in the game.</b> The 1,300-plus with real decklist data behind them get ranked against what you own, a ranking earned from real decks. When a commander doesn't have enough data yet, the app says so instead of guessing.</li>
             <li><b>Not a Commander player?</b> Modern, Pioneer, Legacy and Pauper get their own builder, legality enforced as you go, the Pauper rarity gate handled. Sideboards included.</li>
-            <li><b>Whatever your table plays,</b> a deck can be filed under any of more than 25 format labels — Oathbreaker, Duel Commander, Canadian Highlander, Old School and the rest. Labels, not legality enforcement: that stays with the builders above.</li>
-            <li><b>Taking a deck apart?</b> Deck repurposing shows what those cards could become instead — dismantling something is the start of the next deck, not the end of the last one.</li>
-            <li><b>And if you wreck a deck at 2am,</b> every editing session is saved — the last fifty, restorable with one tap, merged across your devices.</li>
-            <li><b>Import your decks</b> by link or paste; they arrive with the exact printings and finishes you chose. Community decks from real players, every one crediting its builder.</li>
+            <li><b>Whatever your table plays,</b> a deck can be filed under any of more than 25 format labels, from Oathbreaker and Duel Commander to Canadian Highlander and Old School. Labels, not legality enforcement, which stays with the builders above.</li>
+            <li><b>See how a deck fits together</b> <span class="tag">CURATOR</span> with Deck DNA and the Synergy Graph. Tap a card to see only its connections.</li>
+            <li><b>Taking a deck apart?</b> Deck repurposing shows what those cards could become instead. Dismantling something is the start of the next deck, not the end of the last one.</li>
+            <li><b>And if you wreck a deck at 2am,</b> every editing session is saved. The last fifty are kept, merged across your devices, and you can restore any of them.</li>
+            <li><b>Import a deck by link</b> <span class="tag">CURATOR</span> and it arrives with the exact printings and finishes you chose, or paste a list. Share a deck with the community, credited to you, once it passes review.</li>
           </ul>
         </div>
         <div class="art" aria-hidden="true">
@@ -426,41 +460,41 @@
               <div class="app-sub">WHAT YOU CAN BUILD</div>
               <div class="mcard">
                 <div class="ringrow">
-                  <div class="ring" style="background: conic-gradient(var(--good) 331deg, #241a3e 0); color: var(--good);"><span>92%</span></div>
+                  <div class="ring" style="background: conic-gradient(var(--good) 283deg, #241a3e 0); color: var(--good);"><span>79%</span></div>
                   <div>
                     <div class="big">Boros Aggro</div>
-                    <div class="small">3 cards missing · $12.40 to finish</div>
-                    <div class="bar"><i style="width: 92%;"></i></div>
+                    <div class="small">11/14 key cards owned · 3 missing</div>
+                    <div class="bar"><i style="width: 79%;"></i></div>
                   </div>
                 </div>
               </div>
               <div class="mcard">
                 <div class="ringrow">
-                  <div class="ring" style="background: conic-gradient(var(--gold) 230deg, #241a3e 0);"><span>64%</span></div>
+                  <div class="ring" style="background: conic-gradient(var(--gold) 231deg, #241a3e 0);"><span>64%</span></div>
                   <div>
-                    <div class="big">Azorius Control</div>
-                    <div class="small">14 cards missing · cheapest build ready</div>
+                    <div class="big">Blue-White Control</div>
+                    <div class="small">9/14 key cards owned · 5 missing</div>
                     <div class="bar"><i style="width: 64%;"></i></div>
                   </div>
                 </div>
               </div>
               <div class="mcard">
                 <div class="ringrow">
-                  <div class="ring" style="background: conic-gradient(var(--purple) 148deg, #241a3e 0); color: var(--purple);"><span>41%</span></div>
+                  <div class="ring" style="background: conic-gradient(var(--purple) 144deg, #241a3e 0); color: var(--purple);"><span>40%</span></div>
                   <div>
-                    <div class="big">Golgari Midrange</div>
-                    <div class="small">tap for the full missing list →</div>
-                    <div class="bar"><i style="width: 41%; background: var(--purple);"></i></div>
+                    <div class="big">Jund Midrange</div>
+                    <div class="small">6/15 key cards owned · tap for the missing list →</div>
+                    <div class="bar"><i style="width: 40%; background: var(--purple);"></i></div>
                   </div>
                 </div>
               </div>
               <div class="mcard">
                 <div class="ringrow">
-                  <div class="ring" style="background: conic-gradient(var(--teal) 101deg, #241a3e 0); color: var(--teal);"><span>28%</span></div>
+                  <div class="ring" style="background: conic-gradient(var(--teal) 96deg, #241a3e 0); color: var(--teal);"><span>27%</span></div>
                   <div>
                     <div class="big">Mono-Blue Tempo</div>
-                    <div class="small">a budget build is within reach</div>
-                    <div class="bar"><i style="width: 28%; background: var(--teal);"></i></div>
+                    <div class="small">4/15 key cards owned</div>
+                    <div class="bar"><i style="width: 27%; background: var(--teal);"></i></div>
                   </div>
                 </div>
               </div>
@@ -475,12 +509,15 @@
         <div class="copy">
           <span class="kicker">Rue, your AI deck advisor</span>
           <h3>Advice grounded in <em>your</em> cards and real card text</h3>
-          <p>Rue knows every card you own, answers rules questions from the actual card text, and
-            proposes deck changes you approve with a tap. <b>It never touches your decks on its
-            own.</b></p>
+          <p>Rue sees an overview of your whole collection, answers rules questions from the actual
+            card text, and proposes deck changes you approve with a tap. The app checks every card you
+            own before anything is saved to a deck. <b>It never touches your decks on its own.</b></p>
           <ul>
             <li><b>Build a deck from cards you already own</b>, free, in any format</li>
-            <li><b>Upgrade a deck or judge a trade</b> with honest, app-computed numbers</li>
+            <li><b>Upgrade a deck</b> with budget tiers the app prices from real card prices, or
+              <b>size up a trade</b> <span class="tag">CURATOR</span></li>
+            <li><b>Ask where a card gets played</b> and it answers from the app's own play numbers,
+              and says plainly when it has none</li>
             <li><b>Rules questions answered from real card text</b>, and it admits when it isn't sure</li>
             <li><b>Every change is proposed first</b>, so you see the preview before anything happens</li>
           </ul>
@@ -493,11 +530,10 @@
               <div class="app-title" style="font-size: 12px;">RUE</div>
               <div class="app-sub">PERSONAL DECK ADVISOR</div>
               <div class="chatrow chat-user">Can I finish a burn deck with what I own?</div>
-              <div class="chatrow chat-moxi"><span class="who">RUE</span>Close. You're 4 cards short. You own 18 of the core 22, and the cheapest real path to the rest is about $11.
-                Want me to line it up as a deck?</div>
+              <div class="chatrow chat-moxi"><span class="who">RUE</span>Close. You own 11 of its 14 key cards. Want me to line up the missing 3 as a deck?</div>
               <div class="chatrow chat-moxi" style="padding-top: 8px;">
                 <span class="who">PROPOSED · YOU CONFIRM</span>
-                <div class="chips"><i>Save this deck</i><i>Show the 4 cards</i><i>Cheapest printings</i></div>
+                <div class="chips"><i>Save as a deck</i><i>Show the 3 cards</i></div>
               </div>
               <div class="minput">Ask about decks, cards, or rules… <b>→</b></div>
               <div class="gbar"><i></i></div>
@@ -515,8 +551,8 @@
             what changed <b>for the cards you actually own</b> and taps you on the shoulder.</p>
           <ul>
             <li><b>Ban &amp; unban alerts</b> for the decks you keep, including the good news</li>
-            <li><b>Price-spike alerts</b> on cards you own, and spare copies worth trading away</li>
-            <li><b>Reprint warnings</b> for your wishlist, so you can buy in the cheap window</li>
+            <li><b>Price-spike alerts</b> on cards you own, including spare copies</li>
+            <li><b>Reprint alerts</b> for cards on your wishlist</li>
             <li><b>A weekly pulse and a monthly report</b> of what your collection did</li>
             <li><b>New-Set Radar</b> shows what's in your colors the moment a set drops</li>
           </ul>
@@ -536,17 +572,17 @@
               <div class="mcard m-gold">
                 <span class="lbl">PRICE SPIKE</span>
                 <div class="big">Your spare copy is up $9 this week</div>
-                <div class="small">you own 3, a good time to trade one away</div>
+                <div class="small">you own 3 · tap to see it</div>
               </div>
               <div class="mcard m-notice">
                 <span class="lbl">REPRINT</span>
                 <div class="big">A wishlist card was just reprinted</div>
-                <div class="small">reprints usually push the price down</div>
+                <div class="small">tap to see it</div>
               </div>
               <div class="mcard">
                 <span class="lbl" style="color: var(--teal);">✦ MONTHLY REPORT</span>
                 <div class="big">Your June report is ready</div>
-                <div class="small">value, biggest mover &amp; best pickup</div>
+                <div class="small">value, biggest mover &amp; biggest pickup</div>
               </div>
               <div class="gbar"><i></i></div>
             </div>
@@ -572,7 +608,7 @@
           <li><b>Tracked as their own thing.</b> Clearly labelled, held at zero, never counted toward
             what your collection is worth.</li>
           <li><b>Scan them in proxy mode.</b> The scanner still works out which card it stands in
-            for — it just files it at zero.</li>
+            for. It just files it at zero.</li>
           <li><b>Use them everywhere.</b> Build decks with them, check brackets with them, bring them
             to the table.</li>
         </ul>
@@ -582,20 +618,17 @@
     </div>
   </section>
 
-  <!-- ── Play ─────────────────────────────────────────────── -->
+  <!-- ── Commander brackets ───────────────────────────────── -->
   <section class="sect rule">
     <div class="wrap">
       <div class="sect-head">
-        <span class="kicker">Play</span>
-        <h2>For the table, not the desk</h2>
+        <span class="kicker">Commander brackets</span>
+        <h2>What bracket is your deck?</h2>
       </div>
       <div class="honest-panel">
-        <p class="lead">Life and commander damage for up to six players, dice, coin, match logging.
-          The stuff you actually need with a game in front of you.</p>
-        <p class="lead"><b>And when someone asks what bracket your deck is</b> — and someone always
-          asks now — you'll have a real answer in seconds. Checked against Wizards' published
-          Commander limits, with the evidence cards, how many names it checked, and the date of the
-          rubric it used.</p>
+        <p class="lead">Someone at the table always asks now. You'll have a real answer, checked
+          against Wizards' published Commander limits, with the evidence cards, how many
+          names it checked, and the date of the rubric it used.</p>
         <p class="lead">It won't hand you a bracket number. The official rubric includes things
           software can't measure, and inventing one would just be a confident guess in a nice font.
           It tells you what it checked and what that rules out. At a table, that ends the argument
@@ -620,7 +653,10 @@
             night included. A rules crash course. Help picking a first commander.</li>
           <li><b>A guided build for your first deck,</b> and a coach that walks you through your
             first real game while you're playing it.</li>
-          <li><b>Card search works in plain English</b> — you don't have to learn a query language to
+          <li><b>A practice game that plays itself out in front of you.</b> Lands drop from your
+            hand, creatures step onto the battlefield and attackers swing, so you see a turn happen
+            before you have to take one.</li>
+          <li><b>Card search works in plain English.</b> You don't have to learn a query language to
             find a red card that draws cards.</li>
           <li><b>Cards and archetypes carry a complexity note</b> with the reasons listed, so you can
             tell whether something is going to be a lot to pilot before you spend money on it.</li>
@@ -639,9 +675,10 @@
       <div class="more-grid">
         <div class="more"><h4>Exact-printing scanner</h4><p>On-device recognition that reads the set and collector number right off the card. Foil-only printings flag themselves, and any card can be marked foil in a tap. Curator adds hands-free auto-scan for whole stacks.</p></div>
         <div class="more"><h4>Collection value</h4><p>Daily market pricing with history charts, gainers &amp; losers, price alerts, and multi-store comparison, so you know what your binder is really worth.</p></div>
-        <div class="more"><h4>Bring everything with you</h4><p>Import your whole collection from a CSV, pasted or picked from a file, and bring decks in by link or plain text with the exact printings intact.</p></div>
-        <div class="more"><h4>Deck Odds</h4><p>Real draw odds and an opening-hand simulator turn a hunch into a number before game night.</p></div>
-        <div class="more"><h4>Playgroup &amp; Game Table</h4><p>Add friends, message your group, and get matched on trades. The Game Table handles life counters, commander damage, dice, and coin flips.</p></div>
+        <div class="more"><h4>Bring everything with you</h4><p>Import your whole collection from a CSV, pasted or picked from a file, and paste in a decklist. With Curator, a deck link brings the exact printings intact.</p></div>
+        <div class="more"><h4>Deck Odds, with Curator</h4><p>Real draw odds and an opening-hand simulator turn a hunch into a number before game night.</p></div>
+        <div class="more"><h4>Card to card</h4><p>Open any card and swipe to the next one in the list you came from, your collection or a deck's cards, without backing out every time.</p></div>
+        <div class="more"><h4>Playgroup &amp; Game Table</h4><p>Add friends, message your group, and get matched on trades. The Game Table turns every player's life total to face them, with commander damage, dice and a coin.</p></div>
         <div class="more"><h4>New to Magic?</h4><p>There's a built-in crash course, a playstyle quiz, and Rue can pick your first budget deck. The app teaches the game, not just the tracking.</p></div>
       </div>
     </div>
@@ -657,10 +694,10 @@
       <div class="honest-panel">
         <p class="lead"><b>No silent zeroes. No invented percentages. No hidden missing cards. No confident guesses.</b></p>
         <ul>
-          <li><b>A card with no price data shows a dash, not $0.</b> Your collection total says market value — and says buylist runs 20&ndash;40% lower.</li>
+          <li><b>A card with no price data shows a dash, not $0.</b> Your collection total says market value, and says buylist runs 20&ndash;40% lower.</li>
           <li><b>Percentages come with the denominator.</b> Where the sample is too thin to mean anything, you get nothing at all.</li>
           <li><b>Filters tell you how many cards they're hiding.</b> A filtered view never pretends to be the whole collection.</li>
-          <li><b>Proxies never pretend.</b> Tracked, clearly labelled, held at $0 — never counted toward what your collection is worth.</li>
+          <li><b>Proxies never pretend.</b> Tracked, clearly labelled, held at $0, and never counted toward what your collection is worth.</li>
           <li><b>Rue won't bluff.</b> It reads the real card text before it answers and says when it doesn't know, instead of making up a ruling.</li>
           <li><b>The exact card you own.</b> Scans and imports keep the real printing and finish, not generic stand-ins.</li>
         </ul>
@@ -687,7 +724,7 @@
             <li>See how many of each deck's key cards you own</li>
             <li>Missing-card lists &amp; the cost to finish</li>
             <li>Decks with sideboards, precons &amp; the bracket check</li>
-            <li>Build decks from your cards with Rue — three questions a day, free</li>
+            <li>Build decks from your cards with Rue, three questions a day, free</li>
             <li>Import decks &amp; collection (names, sets &amp; counts)</li>
             <li>Proxies: scan &amp; deck them at $0</li>
             <li>Set tracker, wishlist, match logging &amp; the whole new-player path</li>
@@ -698,21 +735,22 @@
         <div class="price mythic">
           <div class="price-name">CURATOR</div>
           <div class="who">For players who want the edge</div>
-          <div class="cost">$4.99/mo <small>or $39.99/yr · founder's pricing — lock it in early</small></div>
+          <div class="cost">$4.99/mo <small>or $39.99/yr · founder's pricing</small></div>
           <ul>
             <li>Everything in the free plan</li>
-            <li>Combos in your collection — including what you're one card away from, by name</li>
+            <li>Combos in your collection, including what you're one card away from, by name</li>
             <li>Deck generators: Commander plus Modern, Pioneer, Legacy &amp; Pauper, from real decklists</li>
             <li>The Watcher: ban/unban, price-spike &amp; reprint alerts</li>
             <li>Cheapest-path shopping: the exact cheapest printings to buy</li>
-            <li>Rue without the daily limit — deck upgrades &amp; trade judgment</li>
+            <li>Rue with no daily limit in normal use (fair use up to 100 a day), for deck upgrades &amp; trade judgment</li>
+            <li>Deck Odds, Deck DNA &amp; the Synergy Graph</li>
             <li>Hands-free auto-scan, plus a bigger daily allowance of photo rescues for the cards nothing can read</li>
             <li>New-Set Radar, value history, sealed tracking &amp; monthly report</li>
             <li>Rich imports: exact printing, condition, foil &amp; price paid</li>
             <li>Own-for-real %, the priced path from proxies to real copies &amp; deck-status ideas</li>
           </ul>
           <p class="note">Early subscribers keep their founder's price.</p>
-          <p class="note">Just here to catalog a collection? The Attic Pass is $7.99, one time — thirty days of hands-free scanning and full-detail import. Not a subscription.</p>
+          <p class="note">Just here to catalog a collection? The Attic Pass is $7.99, one time, for thirty days of hands-free scanning and full-detail import. Not a subscription.</p>
         </div>
       </div>
     </div>
@@ -727,8 +765,9 @@
       </div>
       <div class="faq">
         <details>
-          <summary>When does it launch?</summary>
-          <div class="a">Soon, on <b>both Google Play and the App Store</b>. The honest answer is that it launches when it's genuinely ready, not on a date we'd have to force. Join the <a href="https://discord.gg/G9EgSVWdPP">Discord</a> to be first in. Early community members are how we test and shape it.</div>
+          <summary>Where can I get it?</summary>
+          <div class="a when-soon"><b>Google Play first, then the App Store.</b> The Android release is on its way to Google Play now. The iPhone version is in testing and follows when it's genuinely ready, not on a date we'd have to force. Join the <a href="https://discord.gg/G9EgSVWdPP">Discord</a> to hear the moment each one is out.</div>
+          <div class="a when-live"><b>On <a href="https://play.google.com/store/apps/details?id=com.arcaneledger.app">Google Play</a> now.</b> The iPhone version is in testing and comes to the App Store when it's genuinely ready, not on a date we'd have to force. Join the <a href="https://discord.gg/G9EgSVWdPP">Discord</a> to hear the moment it's out.</div>
         </details>
         <details>
           <summary>Is scanning really free and unlimited?</summary>
@@ -762,10 +801,22 @@
   <section class="sect">
     <div class="wrap">
       <div class="final">
-        <h2>Be there on day one</h2>
-        <p>Launching soon on Google Play and the App Store. Join the Discord for early access,
-          launch news, and a say in what gets built next.</p>
+        <h2 class="when-soon">Be there on day one</h2>
+        <h2 class="when-live">Scan your shoebox tonight</h2>
+        <p class="when-soon">Coming to Google Play first, then the App Store. Join the Discord for
+          release news and a say in what gets built next.</p>
+        <p class="when-live">On Google Play now, with the App Store to follow. Join the Discord
+          for news and a say in what gets built next.</p>
         <div class="ctas">
+          <a class="btn-play when-live" href="https://play.google.com/store/apps/details?id=com.arcaneledger.app">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 2.5v19l10-9.5L4 2.5z" fill="#34a8fe"/>
+              <path d="M4 2.5l10 9.5 3.2-3L6.2 2.2C5.3 1.7 4.4 1.9 4 2.5z" fill="#5ee08a"/>
+              <path d="M4 21.5l10-9.5 3.2 3-11 6.8c-.9.5-1.8.3-2.2-.3z" fill="#fe4a5d"/>
+              <path d="M17.2 9l3.3 2c1 .6 1 1.4 0 2l-3.3 2-3.2-3 3.2-3z" fill="#ffd34e"/>
+            </svg>
+            <span><small>GET IT ON</small>Google Play</span>
+          </a>
           <a class="btn-gold" href="https://discord.gg/G9EgSVWdPP">JOIN THE DISCORD →</a>
         </div>
       </div>
