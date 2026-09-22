@@ -1,42 +1,68 @@
 <!DOCTYPE html>
+<!-- GitHub Pages serves this file for ANY missing path, at that path. Every URL here is ROOT-RELATIVE for that reason:
+     a relative href at /some/nested/path resolved under /some/nested/ and the page arrived with no stylesheet and
+     broken images (seen 2026-09-22).
+     No invite page, measured the same day: the app builds no nested links on arcaneledger.app. Everything it sends to
+     another person points at the site root (Invite a friend, Share Showcase), and friend adds use the custom scheme
+     arcaneledger:///playgroup?addFriend=CODE. Android App Links are NOT verified for this domain (no intentFilters,
+     no autoVerify, no /.well-known/assetlinks.json), so no link from the app is meant to open here. If a shared web
+     link is ever built, give it an invite page here and keep its store button in the play-live swap list in index.html. -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#181124" />
-  <title>Lost in the Blind Eternities | Arcane Ledger</title>
-  <link rel="icon" type="image/png" href="icon.png" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#0a0714" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="noindex" />
+  <title>Page not found | Arcane Ledger</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preload" href="/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/cinzel-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <header>
+  <header class="site">
     <div class="wrap nav">
-      <img src="icon.png" alt="Arcane Ledger icon" />
-      <a class="brand" href="/">ARCANE LEDGER</a>
+      <a class="home" href="/"><img src="/icon-104.webp" width="34" height="34" alt="" /><span class="brand">ARCANE LEDGER</span></a>
       <nav class="links">
-        <a href="support.html">SUPPORT</a>
+        <a href="/#how">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#faq">FAQ</a>
+        <a class="cta" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero wrap">
-    <img class="logo" src="icon.png" alt="Arcane Ledger" />
+  <main class="hero wrap">
+    <img class="logo" src="/icon-360.webp" width="120" height="120" alt="" />
     <h1>404</h1>
     <p class="tagline">This page got exiled.</p>
-    <p class="sub">If you followed a link from the app (like a friend invite), open it on your phone with
-       Arcane Ledger installed. It's meant to open in the app, not the browser.</p>
-    <a class="badge-soon" href="/">BACK TO SAFETY</a>
-  </section>
+    <p class="sub">There is nothing at this address. The home page has everything Arcane Ledger does, and the
+      support page has help and contact details.</p>
+    <a class="btn-gold" href="/">Back to the home page</a>
+  </main>
 
   <footer>
     <div class="wrap">
+      <nav class="foot-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/support.html">Support</a>
+        <a href="https://discord.gg/G9EgSVWdPP">Discord</a>
+      </nav>
       <p class="company">© Arcane Ledger</p>
       <p class="legal">Arcane Ledger is not affiliated with, endorsed, sponsored, or approved by Wizards of the
-        Coast LLC. Magic: The Gathering and its logos are trademarks of Wizards of the Coast LLC.</p>
+        Coast LLC. Magic: The Gathering, its logos, card names, and card images are trademarks and copyrights of
+        Wizards of the Coast LLC. Card data and images are provided by Scryfall; sealed-product prices by
+        JustTCG. Prices shown in the app are estimates from third-party market data and are not offers to buy or
+        sell.</p>
     </div>
   </footer>
-  <!-- Cloudflare Web Analytics — privacy-first visit counting: no cookies, no personal tracking,
-       so no consent banner is needed. Dashboard: dash.cloudflare.com → Web Analytics. -->
+  <!-- Cloudflare Web Analytics: privacy-first visit counting, no cookies, no personal tracking,
+       so no consent banner is needed. Dashboard: dash.cloudflare.com, Web Analytics. -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "71e10735d8584be0b1e62e70bc0722fe"}'></script>
 </body>
 </html>

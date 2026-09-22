@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#181124" />
+  <meta name="theme-color" content="#0a0714" />
+  <meta name="color-scheme" content="dark" />
   <title>Support | Arcane Ledger</title>
-  <link rel="icon" type="image/png" href="icon.png" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Help with Arcane Ledger, the Magic: The Gathering collection app. Scanning tips, account and backup, subscriptions, and how to report a bug." />
+  <link rel="canonical" href="https://arcaneledger.app/support.html" />
+  <meta property="og:site_name" content="Arcane Ledger" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preload" href="/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/cinzel-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <header>
+  <header class="site">
     <div class="wrap nav">
-      <img src="icon.png" alt="Arcane Ledger icon" />
-      <a class="brand" href="/">ARCANE LEDGER</a>
+      <a class="home" href="/"><img src="/icon-104.webp" width="34" height="34" alt="" /><span class="brand">ARCANE LEDGER</span></a>
       <nav class="links">
-        <a href="privacy.html">PRIVACY</a>
-        <a href="terms.html">TERMS</a>
-        <a href="support.html">SUPPORT</a>
+        <a href="/#how">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#faq">FAQ</a>
+        <a class="cta" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
       </nav>
     </div>
   </header>
@@ -26,21 +35,22 @@
     <p class="updated">We actually read these.</p>
 
     <div class="panel">
-      <p><strong>Email:</strong> <a href="mailto:support@arcaneledger.app">support@arcaneledger.app</a><br/>
-         <strong>Community:</strong> <a href="https://discord.gg/G9EgSVWdPP">discord.gg/G9EgSVWdPP</a>,
-         the fastest place for questions, bug reports, and deck talk.</p>
+      <p>Email <a href="mailto:support@arcaneledger.app">support@arcaneledger.app</a> about anything, bug
+         reports included.</p>
+      <p>For questions and deck talk, join the <a href="https://discord.gg/G9EgSVWdPP">Arcane Ledger Discord</a>.
+         To report a problem there, send a DM to Arcane Ledger rather than posting it in a channel.</p>
     </div>
 
     <h2>Scanning tips</h2>
     <ul>
       <li>Good light beats everything. Avoid hard glare on foils.</li>
-      <li>Tap-to-scan reads the card name instantly. AUTO mode is for stacks: drop a card, let it settle,
-          drop the next.</li>
-      <li>If a duplicate didn't count in AUTO, nudge the card. The scanner re-reads on movement.</li>
-      <li>Hear a fail sound in AUTO? It wasn't sure about that card and won't guess — tap that one to scan it.</li>
-      <li>Card won't read at all &mdash; showcase frame, worn card? Tap <strong>Identify by photo</strong> when it
-          appears and the app identifies it from the image (daily limit applies).</li>
-      <li>Wrong printing matched? Open the card → Printings tab and pick yours.</li>
+      <li>Tap to scan reads one card at a time. <strong>Auto-scan</strong> (the AUTO button) is for stacks. Drop a
+          card, let it settle, then drop the next.</li>
+      <li>If a duplicate didn't count in Auto-scan, nudge the card. The scanner reads again when it moves.</li>
+      <li>Hear a fail sound in Auto-scan? It wasn't sure about that card and won't guess. Tap that one to scan it.</li>
+      <li>Card won't read at all, like a showcase frame or a worn card? Tap <strong>Identify by photo</strong> when it
+          appears and the app identifies it from the image (there is a daily limit).</li>
+      <li>Wrong printing matched? Open the card, go to the Printings tab and pick yours.</li>
     </ul>
 
     <h2>Account &amp; backup</h2>
@@ -60,24 +70,32 @@
       <li>Curator is billed through Google Play on Android and the App Store on iPhone.</li>
       <li>To manage or cancel on Android, open Play Store → Profile → Payments &amp; subscriptions.
           On iPhone, open Settings → your name → Subscriptions.</li>
-      <li>Curator members: <strong>Settings → Manage Subscription</strong> in the app opens that page
+      <li>If you subscribe to Curator, <strong>Settings → Manage Subscription</strong> in the app opens that page
           directly.</li>
-      <li>Reinstalled and Curator looks locked? Tap RESTORE on the upgrade screen.</li>
+      <li>Reinstalled and Curator looks locked? Tap <strong>Restore Purchase</strong> on the upgrade screen.</li>
       <li>Unsubscribing never deletes your collection.</li>
     </ul>
 
     <h2>Found a bug?</h2>
     <p>Tell us what you did, what you expected, and what happened instead. A screenshot helps a ton.
-       Drop it in the Discord or email us.</p>
+       Send it as a DM to Arcane Ledger on Discord, or email
+       <a href="mailto:support@arcaneledger.app">support@arcaneledger.app</a>.</p>
   </main>
 
   <footer>
     <div class="wrap">
+      <nav class="foot-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/support.html">Support</a>
+        <a href="https://discord.gg/G9EgSVWdPP">Discord</a>
+      </nav>
       <p class="company">© Arcane Ledger</p>
       <p class="legal">Arcane Ledger is not affiliated with, endorsed, sponsored, or approved by Wizards of the
         Coast LLC. Magic: The Gathering, its logos, card names, and card images are trademarks and copyrights of
         Wizards of the Coast LLC. Card data and images are provided by Scryfall; sealed-product prices by
-        JustTCG.</p>
+        JustTCG. Prices shown in the app are estimates from third-party market data and are not offers to buy or
+        sell.</p>
     </div>
   </footer>
   <!-- Cloudflare Web Analytics — privacy-first visit counting: no cookies, no personal tracking,

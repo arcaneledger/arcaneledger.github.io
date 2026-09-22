@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#181124" />
+  <meta name="theme-color" content="#0a0714" />
+  <meta name="color-scheme" content="dark" />
   <title>Terms of Use | Arcane Ledger</title>
-  <link rel="icon" type="image/png" href="icon.png" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="The terms for using Arcane Ledger, the Magic: The Gathering collection app, including subscriptions, the Attic Pass and fair use of the AI features." />
+  <link rel="canonical" href="https://arcaneledger.app/terms.html" />
+  <meta property="og:site_name" content="Arcane Ledger" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preload" href="/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/cinzel-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <header>
+  <header class="site">
     <div class="wrap nav">
-      <img src="icon.png" alt="Arcane Ledger icon" />
-      <a class="brand" href="/">ARCANE LEDGER</a>
+      <a class="home" href="/"><img src="/icon-104.webp" width="34" height="34" alt="" /><span class="brand">ARCANE LEDGER</span></a>
       <nav class="links">
-        <a href="privacy.html">PRIVACY</a>
-        <a href="terms.html">TERMS</a>
-        <a href="support.html">SUPPORT</a>
+        <a href="/#how">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#faq">FAQ</a>
+        <a class="cta" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
       </nav>
     </div>
   </header>
@@ -64,11 +73,11 @@
        Curator until the end of the paid period. Your collection data is never deleted for unsubscribing.</p>
 
     <h2>Attic Pass (one-time purchase)</h2>
-    <p>The Attic Pass is an optional <strong>one-time purchase, not a subscription</strong> — it never
+    <p>The Attic Pass is an optional <strong>one-time purchase, not a subscription</strong>. It never
        auto-renews and there is nothing to cancel. Each purchase unlocks the Attic Pass features
        (currently hands-free auto-scanning and full-detail import) for <strong>30 days from that
        purchase</strong>. When the 30 days end, those features simply lock again and the app tells you so;
-       your collection data is never affected. You can buy another pass whenever you like — a new purchase
+       your collection data is never affected. You can buy another pass whenever you like. A new purchase
        starts a fresh 30-day window from its own purchase date, including if you buy again before the
        current window ends. The pass follows your store account, so reinstalling or switching devices
        restores it through the store's normal restore flow. Billing and refunds for the Attic Pass are
@@ -81,7 +90,7 @@
 
     <h2>Your data</h2>
     <p>Your collection belongs to you. Our handling of your information is described in the
-       <a href="privacy.html">Privacy Policy</a>. You can export your collection (CSV) from the app at
+       <a href="/privacy.html">Privacy Policy</a>. You can export your collection (CSV) from the app at
        any time.</p>
 
     <h2>No warranty</h2>
@@ -105,10 +114,18 @@
 
   <footer>
     <div class="wrap">
+      <nav class="foot-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/support.html">Support</a>
+        <a href="https://discord.gg/G9EgSVWdPP">Discord</a>
+      </nav>
       <p class="company">© Arcane Ledger</p>
       <p class="legal">Arcane Ledger is not affiliated with, endorsed, sponsored, or approved by Wizards of the
         Coast LLC. Magic: The Gathering, its logos, card names, and card images are trademarks and copyrights of
-        Wizards of the Coast LLC. Card data and images are provided by Scryfall.</p>
+        Wizards of the Coast LLC. Card data and images are provided by Scryfall; sealed-product prices by
+        JustTCG. Prices shown in the app are estimates from third-party market data and are not offers to buy or
+        sell.</p>
     </div>
   </footer>
   <!-- Cloudflare Web Analytics — privacy-first visit counting: no cookies, no personal tracking,

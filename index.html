@@ -8,26 +8,75 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0a0714" />
+  <meta name="color-scheme" content="dark" />
   <title>Arcane Ledger | You own more decks than you think</title>
   <meta name="description" content="You own more decks than you think. Scan your Magic: The Gathering collection once and Arcane Ledger finds the decks whose key cards you mostly own, the combos already sitting in your binder, and the commanders that fit what you actually have. Free unlimited tap scanning. Coming to Google Play first, then the App Store." />
-  <link rel="icon" type="image/png" href="icon.png" />
   <link rel="canonical" href="https://arcaneledger.app/" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Arcane Ledger" />
   <meta property="og:title" content="Arcane Ledger | You own more decks than you think" />
   <meta property="og:description" content="Scan your collection once. Arcane Ledger finds the decks whose key cards you mostly own, the combos already sitting in your binder, and the commanders that fit what you actually have." />
   <meta property="og:url" content="https://arcaneledger.app/" />
   <meta property="og:image" content="https://arcaneledger.app/icon.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Arcane Ledger | Your Personal Magic Coach" />
-  <meta name="twitter:description" content="The app that tells you what you can build with the cards you own." />
   <meta name="twitter:image" content="https://arcaneledger.app/icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=optional" rel="stylesheet" />
+  <link rel="preload" href="/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/cinzel-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://arcaneledger.app/#website",
+        "name": "Arcane Ledger",
+        "alternateName": "Arcane Ledger MTG",
+        "url": "https://arcaneledger.app/",
+        "publisher": { "@id": "https://arcaneledger.app/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://arcaneledger.app/#organization",
+        "name": "Arcane Ledger",
+        "url": "https://arcaneledger.app/",
+        "logo": "https://arcaneledger.app/icon.png",
+        "email": "support@arcaneledger.app"
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://arcaneledger.app/#app",
+        "name": "Arcane Ledger",
+        "operatingSystem": "Android",
+        "applicationCategory": "UtilitiesApplication",
+        "description": "A Magic: The Gathering collection scanner and deck builder that finds the decks you can already build from the cards you own.",
+        "url": "https://arcaneledger.app/",
+        "image": "https://arcaneledger.app/icon.png",
+        "publisher": { "@id": "https://arcaneledger.app/#organization" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
   <style>
+    /* Cinzel, self-hosted (latin 600 and 700 from @fontsource/cinzel 5.3.0, SIL OFL 1.1, licence in /fonts/OFL.txt).
+       swap, not optional: with optional a first-time visitor kept the fallback serif for the whole visit.
+       KEEP IN SYNC with style.css. */
+    @font-face {
+      font-family: "Cinzel"; font-style: normal; font-weight: 600; font-display: swap;
+      src: url("/fonts/cinzel-latin-600-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Cinzel"; font-style: normal; font-weight: 700; font-display: swap;
+      src: url("/fonts/cinzel-latin-700-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* KEEP IN SYNC with the :root in style.css. */
     :root {
       --bg: #0a0714;
-      --bg2: #0e0a1c;
       --panel: #171028;
       --panel2: #1c1132;
       --border: #34215c;
@@ -35,14 +84,14 @@
       --gold: #e8c97a;
       --gold-deep: #c9a84c;
       --purple: #9d6bff;
-      --purple-muted: #7a5faa;
       --text: #efe9f8;
       --soft: #c3b3e0;
-      --dim: #8874ad;
+      --dim: #a08fc4;
       --good: #4dff9a;
       --red: #ff7a5c;
       --teal: #4dffd8;
-      --radius: 18px;
+      --foot-link: #9580c2;
+      --legal: #7c6aa6;
       --disp: "Cinzel", Georgia, serif;
       --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
@@ -60,32 +109,36 @@
     .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
     a { color: var(--gold); }
     h1, h2, .brand, .price-name { font-family: var(--disp); }
+    h1, h2, h3 { text-wrap: balance; }
     section { position: relative; }
     .kicker { color: var(--purple); font-size: 12px; letter-spacing: 4px; font-weight: 700; text-transform: uppercase; }
 
-    /* ── Nav ─────────────────────────────────────────────── */
+    /* ── Header (KEEP IN SYNC with style.css) ────────────────
+       Rules on .nav and .hero set TOP and BOTTOM padding only. A shorthand there overrode .wrap's side padding
+       (same specificity, later in the file) and put the header and hero against the screen edge on phones. */
     header.site {
       position: sticky; top: 0; z-index: 50;
       background: rgba(10, 7, 20, 0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(52, 33, 92, 0.55);
     }
-    .nav { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
-    .nav img { width: 34px; height: 34px; border-radius: 8px; }
-    .nav .brand { color: var(--gold); font-weight: 700; letter-spacing: 2.5px; font-size: 15px; text-decoration: none; }
+    .nav { display: flex; align-items: center; gap: 12px; padding-top: 12px; padding-bottom: 12px; }
+    .nav .home { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
+    .nav img { width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0; }
+    .nav .brand { color: var(--gold); font-family: var(--disp); font-weight: 700; letter-spacing: 2.5px; font-size: 15px; white-space: nowrap; }
     .nav .links { margin-left: auto; display: flex; gap: 24px; align-items: center; }
-    .nav .links a { color: var(--soft); text-decoration: none; font-size: 13px; letter-spacing: 1px; }
+    .nav .links a { color: var(--soft); text-decoration: none; font-size: 14px; }
     .nav .links a:hover { color: var(--gold); }
-    .nav .cta {
-      background: linear-gradient(180deg, #f6e2a8, #d6a94e); color: #0a0714 !important;
-      padding: 8px 18px; border-radius: 10px; font-weight: 700; font-size: 12.5px; letter-spacing: 1px;
+    .nav .links a.cta {
+      color: var(--gold); background: transparent; border: 1px solid rgba(232, 201, 122, 0.6);
+      border-radius: 10px; padding: 7px 14px; font-size: 14px; font-weight: 600; white-space: nowrap;
     }
+    .nav .links a.cta:hover { border-color: var(--gold); }
     @media (max-width: 720px) { .nav .links a:not(.cta) { display: none; } }
 
     /* ── Hero ────────────────────────────────────────────── */
-    .hero { padding: 72px 0 40px; }
+    .hero { padding-top: 72px; padding-bottom: 40px; }
     .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
     .hero h1 { color: var(--text); font-size: 46px; line-height: 1.18; font-weight: 700; margin: 18px 0 20px; letter-spacing: 0.5px; }
-    .hero h1 em { color: var(--gold); font-style: normal; }
     .hero .sub { color: var(--soft); font-size: 17px; max-width: 520px; }
     .hero .ctas { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; align-items: center; }
     .btn-gold {
@@ -100,8 +153,8 @@
       border: 1px solid var(--border); border-radius: 14px; padding: 14px 20px; font-size: 13px; letter-spacing: 0.6px;
     }
     .chip-soon svg { width: 18px; height: 18px; opacity: 0.9; }
-    .hero .proof { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 34px; }
-    .hero .proof span { color: var(--dim); font-size: 12.5px; letter-spacing: 0.6px; display: inline-flex; align-items: center; gap: 7px; }
+    .hero .proof { display: flex; gap: 10px 18px; flex-wrap: wrap; margin-top: 34px; }
+    .hero .proof span { color: var(--dim); font-size: 12.5px; display: inline-flex; align-items: center; gap: 7px; }
     .hero .proof b { color: var(--good); font-weight: 700; }
 
     /* ── Phone mockups (pure CSS, illustrative renders of real app surfaces) ── */
@@ -181,19 +234,7 @@
     .sect { padding: 74px 0; }
     .sect-head { text-align: center; max-width: 640px; margin: 0 auto 46px; }
     .sect-head h2 { color: var(--text); font-size: 30px; font-weight: 700; margin-top: 14px; line-height: 1.25; }
-    .sect-head p { color: var(--dim); font-size: 15px; margin-top: 12px; }
     .rule { border-top: 1px solid rgba(52, 33, 92, 0.45); }
-
-    /* How it works */
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .step { background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 26px 24px; }
-    .step .n {
-      width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      border: 1px solid var(--gold); color: var(--gold); font-weight: 800; font-size: 16px; margin-bottom: 16px; font-family: var(--disp);
-    }
-    .step h3 { color: var(--text); font-size: 17px; margin-bottom: 8px; }
-    .step p { color: var(--dim); font-size: 14px; }
-    .step p b { color: var(--soft); }
 
     /* Feature rows */
     .feat { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: center; padding: 44px 0; }
@@ -209,7 +250,7 @@
     .feat .tag { display: inline-block; margin-left: 10px; vertical-align: 2px; font-size: 10px; letter-spacing: 1.6px; font-weight: 800; color: #0a0714; background: linear-gradient(180deg, #f6e2a8, #d6a94e); border-radius: 6px; padding: 3px 8px; font-family: var(--body); }
 
     /* Secondary grid */
-    .more-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+    .more-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px; }
     .more { background: var(--panel); border: 1px solid var(--border-soft); border-radius: 14px; padding: 20px 20px; }
     .more h4 { color: var(--gold); font-size: 14.5px; margin-bottom: 6px; letter-spacing: 0.4px; }
     .more p { color: var(--dim); font-size: 13.5px; }
@@ -219,7 +260,11 @@
       background: linear-gradient(170deg, #1c1132, #140d24); border: 1px solid var(--border);
       border-radius: 22px; padding: 40px 42px; max-width: 820px; margin: 0 auto;
     }
-    .honest-panel .lead { color: var(--text); font-size: 18px; text-align: center; font-family: var(--disp); line-height: 1.5; }
+    /* Paragraphs read in the body font, left aligned. Cinzel is for the wordmark and h1, h2, h3 only: on a phone
+       a display-font paragraph rendered as about twenty centred lines of small caps. */
+    .honest-panel .lead { color: var(--text); font-size: 17px; line-height: 1.6; }
+    .honest-panel .lead + .lead { margin-top: 16px; }
+    .honest-panel ul + .lead { margin-top: 24px; }
     .honest-panel ul { list-style: none; display: grid; gap: 14px; margin-top: 26px; }
     .honest-panel li { color: var(--soft); font-size: 14.5px; padding-left: 30px; position: relative; }
     .honest-panel li::before { content: "✓"; color: var(--good); position: absolute; left: 0; font-weight: 800; }
@@ -258,17 +303,17 @@
         linear-gradient(170deg, #1c1132, #120b22);
       max-width: 860px; margin: 0 auto;
     }
-    .final h2 { color: var(--text); font-size: 30px; font-weight: 700; }
+    .final h2 { color: var(--text); font-size: 30px; font-weight: 700; line-height: 1.25; }
     .final p { color: var(--dim); font-size: 15px; margin: 12px auto 26px; max-width: 480px; }
     .final .ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-    /* Footer */
-    footer { border-top: 1px solid rgba(52, 33, 92, 0.45); padding: 38px 0 50px; margin-top: 76px; }
-    footer .foot-links { display: flex; gap: 26px; flex-wrap: wrap; margin-bottom: 18px; }
-    footer .foot-links a { color: var(--purple-muted); font-size: 13px; text-decoration: none; }
+    /* ── Footer (KEEP IN SYNC with style.css) ───────────────── */
+    footer { border-top: 1px solid rgba(52, 33, 92, 0.45); padding-top: 30px; padding-bottom: 50px; margin-top: 76px; }
+    footer .foot-links { display: flex; column-gap: 26px; flex-wrap: wrap; margin-bottom: 12px; }
+    footer .foot-links a { color: var(--foot-link); font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; min-height: 40px; }
     footer .foot-links a:hover { color: var(--gold); }
-    footer .company { color: var(--purple-muted); font-size: 12.5px; margin-bottom: 8px; letter-spacing: 1px; }
-    footer .legal { color: #54447a; font-size: 12px; max-width: 780px; }
+    footer .company { color: var(--foot-link); font-size: 13px; margin-bottom: 8px; }
+    footer .legal { color: var(--legal); font-size: 13px; max-width: 780px; }
 
     /* Responsive */
     @media (max-width: 900px) {
@@ -276,14 +321,32 @@
       .hero .sub { margin: 0 auto; }
       .hero .ctas, .hero .proof { justify-content: center; }
       .hero h1 { font-size: 36px; }
-      .steps { grid-template-columns: 1fr; }
-      .feat { grid-template-columns: 1fr; gap: 30px; padding: 34px 0; }
+      /* From 700 to 900 a feature row keeps its phone beside the copy instead of stacking into one long column. */
+      .feat { grid-template-columns: 1fr 296px; gap: 34px; padding: 34px 0; }
       .feat.rev .copy { order: 1; } .feat.rev .art { order: 2; }
       .price-grid { grid-template-columns: 1fr; }
       .sect { padding: 56px 0; }
       .sect-head h2 { font-size: 25px; }
+      .final h2 { font-size: 25px; }
+    }
+    @media (max-width: 700px) {
+      .feat { grid-template-columns: 1fr; gap: 30px; }
     }
     @media (max-width: 360px) { .phone { width: 260px; } }
+    /* Phones: 16px side gutter, and the header on one row. */
+    @media (max-width: 480px) {
+      .wrap { padding-left: 16px; padding-right: 16px; }
+      .nav { gap: 10px; }
+      .nav .home { gap: 10px; }
+      .nav .brand { font-size: 13.5px; letter-spacing: 1.6px; }
+      .nav .links a.cta { font-size: 13px; padding: 7px 12px; }
+    }
+    /* Below 360 (measured: the one-row header needs about 350px at the sizes above). */
+    @media (max-width: 359px) {
+      .nav img { width: 28px; height: 28px; }
+      .nav .brand { font-size: 12px; letter-spacing: 1.2px; }
+      .nav .links a.cta { font-size: 12.5px; padding: 6px 10px; }
+    }
 
     /* ── Store state (see the comment above <html>) ─────────── */
     .play-soon .when-live { display: none !important; }
@@ -302,14 +365,13 @@
 
   <header class="site">
     <div class="wrap nav">
-      <img src="icon.png" alt="" />
-      <a class="brand" href="/">ARCANE LEDGER</a>
+      <a class="home" href="/"><img src="/icon-104.webp" width="34" height="34" alt="" /><span class="brand">ARCANE LEDGER</span></a>
       <nav class="links">
-        <a href="#how">How it works</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a class="cta" href="https://discord.gg/G9EgSVWdPP">JOIN THE DISCORD</a>
+        <a href="/#how">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#faq">FAQ</a>
+        <a class="cta" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
       </nav>
     </div>
   </header>
@@ -370,7 +432,7 @@
             <div class="qrow"><i>Ask Rue</i><i>Learn to Play</i><i>Game Table</i></div>
             <div class="mcard m-gold">
               <span class="lbl">RUE NOTICED</span>
-              <div class="big">Splinter Twin was just unbanned in Modern. You own 2</div>
+              <div class="big">A card in one of your decks changed legality</div>
               <div class="small">tap to ask Rue what it means</div>
             </div>
             <div class="mcard">
@@ -408,14 +470,14 @@
           <b>Point your phone at it.</b></p>
         <ul>
           <li><b>Recognition runs on the phone itself</b>, against over 35,000 cards stored offline.
-            No signal needed, it works in a garage. Tap through one at a time, or go hands-free and just
+            No signal needed, it works in a garage. Tap through one at a time, or turn on Auto-scan and just
             feed it cards. Proxies count too: flip on Proxy mode and they track at $0, clearly
             marked.</li>
           <li><b>When it isn't sure, it asks.</b> You get a shortlist, not a wrong card quietly filed
-            in your collection. When hands-free mode refuses a card, you hear it and you see it.
+            in your collection. When Auto-scan refuses a card, you hear it and you see it.
             Nothing vanishes without telling you.</li>
           <li><b>And for the ones nothing can read</b>, the showcase frames, the borderless
-            alt-arts, the card that lived in a jeans pocket, tap photo rescue and it tries to
+            alt-arts, the card that lived in a jeans pocket, tap Identify by photo and it tries to
             identify the card from the image. There's a daily allowance on both plans, and it needs a
             connection.</li>
           <li><b>Already took a picture of it?</b> Import the photo from your phone and the scanner
@@ -424,7 +486,7 @@
             played, without adding it to anything. Keep it only if you want it.</li>
         </ul>
         <p class="lead"><b>Doing this once?</b> The Attic Pass is $7.99, one time, for thirty days of
-          hands-free scanning and full-detail import. Not a subscription.</p>
+          Auto-scan and full-detail import. Not a subscription.</p>
       </div>
     </div>
   </section>
@@ -581,7 +643,7 @@
               </div>
               <div class="mcard">
                 <span class="lbl" style="color: var(--teal);">✦ MONTHLY REPORT</span>
-                <div class="big">Your June report is ready</div>
+                <div class="big">Your monthly report is ready</div>
                 <div class="small">value, biggest mover &amp; biggest pickup</div>
               </div>
               <div class="gbar"><i></i></div>
@@ -673,7 +735,7 @@
         <h2>Everything else in the box</h2>
       </div>
       <div class="more-grid">
-        <div class="more"><h4>Exact-printing scanner</h4><p>On-device recognition that reads the set and collector number right off the card. Foil-only printings flag themselves, and any card can be marked foil in a tap. Curator adds hands-free auto-scan for whole stacks.</p></div>
+        <div class="more"><h4>Exact-printing scanner</h4><p>On-device recognition that reads the set and collector number right off the card. Foil-only printings flag themselves, and any card can be marked foil in a tap. Curator adds Auto-scan for whole stacks.</p></div>
         <div class="more"><h4>Collection value</h4><p>Daily market pricing with history charts, gainers &amp; losers, price alerts, and multi-store comparison, so you know what your binder is really worth.</p></div>
         <div class="more"><h4>Bring everything with you</h4><p>Import your whole collection from a CSV, pasted or picked from a file, and paste in a decklist. With Curator, a deck link brings the exact printings intact.</p></div>
         <div class="more"><h4>Deck Odds, with Curator</h4><p>Real draw odds and an opening-hand simulator turn a hunch into a number before game night.</p></div>
@@ -744,13 +806,13 @@
             <li>Cheapest-path shopping: the exact cheapest printings to buy</li>
             <li>Rue with no daily limit in normal use (fair use up to 100 a day), for deck upgrades &amp; trade judgment</li>
             <li>Deck Odds, Deck DNA &amp; the Synergy Graph</li>
-            <li>Hands-free auto-scan, plus a bigger daily allowance of photo rescues for the cards nothing can read</li>
+            <li>Auto-scan for whole stacks, plus more Identify by photo lookups each day for the cards nothing can read</li>
             <li>New-Set Radar, value history, sealed tracking &amp; monthly report</li>
             <li>Rich imports: exact printing, condition, foil &amp; price paid</li>
             <li>Own-for-real %, the priced path from proxies to real copies &amp; deck-status ideas</li>
           </ul>
           <p class="note">Early subscribers keep their founder's price.</p>
-          <p class="note">Just here to catalog a collection? The Attic Pass is $7.99, one time, for thirty days of hands-free scanning and full-detail import. Not a subscription.</p>
+          <p class="note">Just here to catalog a collection? The Attic Pass is $7.99, one time, for thirty days of Auto-scan and full-detail import. Not a subscription.</p>
         </div>
       </div>
     </div>
@@ -771,7 +833,7 @@
         </details>
         <details>
           <summary>Is scanning really free and unlimited?</summary>
-          <div class="a"><b>Yes.</b> Tap-to-scan, unlimited cards, free forever. Curator adds convenience and intelligence on top, like hands-free auto-scan, the Watcher, New-Set Radar, and the cheapest-path shopping list. It never takes the tracker away.</div>
+          <div class="a"><b>Yes.</b> Tap-to-scan, unlimited cards, free forever. Curator adds convenience and intelligence on top, like Auto-scan, the Watcher, New-Set Radar, and the cheapest-path shopping list. It never takes the tracker away.</div>
         </details>
         <details>
           <summary>Does it work offline?</summary>
@@ -787,7 +849,7 @@
         </details>
         <details>
           <summary>Is my collection private?</summary>
-          <div class="a">Your collection lives <b>on your device</b>, with optional account backup so you can restore it on a new phone. We don't sell your data. Prices are clearly labeled third-party estimates. Details in the <a href="privacy.html">privacy policy</a>.</div>
+          <div class="a">Your collection lives <b>on your device</b>, with optional account backup so you can restore it on a new phone. We don't sell your data. Prices are clearly labeled third-party estimates. Details in the <a href="/privacy.html">privacy policy</a>.</div>
         </details>
         <details>
           <summary>What languages does it speak?</summary>
@@ -825,12 +887,12 @@
 
   <footer>
     <div class="wrap">
-      <div class="foot-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Use</a>
-        <a href="support.html">Support</a>
+      <nav class="foot-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/support.html">Support</a>
         <a href="https://discord.gg/G9EgSVWdPP">Discord</a>
-      </div>
+      </nav>
       <p class="company">© Arcane Ledger</p>
       <p class="legal">Arcane Ledger is not affiliated with, endorsed, sponsored, or approved by Wizards of the
         Coast LLC. Magic: The Gathering, its logos, card names, and card images are trademarks and copyrights of
