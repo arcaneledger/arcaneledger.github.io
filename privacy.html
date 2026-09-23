@@ -50,6 +50,10 @@
           guest's collection is backed up to our cloud too. Adding an email to that account is what lets you
           restore it on another device, and it also turns on the friend features (like shared-deck matching and
           trade suggestions).</li>
+      <li><strong>Decks, wishlist and game history.</strong> The decks you import or build (with each deck's
+          change history), your wishlist, the games you log at the Game Table, and each binder's value history
+          (its daily value and a record of the cards added each day) are also backed up to our cloud, guests
+          included. Adding an email is what lets you restore them on another device.</li>
       <li><strong>Messages.</strong> Direct messages you send to friends in Playgroup are stored so they
           can be delivered, and are visible only to you and the recipient. You can block users at any time.</li>
       <li><strong>Community submissions.</strong> Decks you submit to the Community tab, with your display
@@ -58,12 +62,16 @@
 
     <h2>Card scanning</h2>
     <p>Card recognition runs <strong>on your device</strong> by default. Camera frames are read locally and
-       are not uploaded. A resized image of the card being scanned is sent to our image-recognition partner
+       are not uploaded. An image of the card being scanned is sent to our image-recognition partner
        (Ximilar) in three cases. The first is when premium exact-printing matching refines a scan. The second
        is when you tap the photo-identification option on a card the on-device reader couldn't make out
        (available on every tier, with a daily limit). The third is when Auto-scan isn't sure about a card and
        the app's other checks can't identify it either. Auto-scan then sends a photo of that card without a
-       tap, and it counts toward the same daily limit. In all three cases Ximilar processes the image solely
+       tap, and it counts toward the same daily limit. The image comes from your camera or, in the first two
+       cases, from a photo you chose to import from your gallery. For premium matching and Auto-scan the image
+       is resized before it is sent. For photo identification a photo from your gallery is resized too, while a
+       photo taken with your camera is sent at the resolution the camera took it, usually cropped to the card.
+       It goes through our own server, which forwards only the image. In all three cases Ximilar processes the image solely
        to return a result and does not store it, and neither we nor Ximilar use your scans to train models. We don't keep the image
        either. It's deleted right after the scan.</p>
 
@@ -105,6 +113,16 @@
     <p>Your data is kept while your account is active. You can clear your collection in the app at any time
        (Settings → Account &amp; Backup). Usage events are automatically deleted after 180 days regardless
        of account status.</p>
+    <p>Guest accounts, the ones without a confirmed email, are also cleaned up automatically once a month. A
+       guest account is deleted from our cloud, along with its profile, its friend code and its backups, when it
+       is more than 30 days old and has no collection backup in our cloud, or when it is more than 180 days old
+       and its collection backup has not been updated in the last 180 days. The collection backup is updated
+       when you add, change or remove cards, so other use of the app, such as opening it, decks, the wishlist or
+       Rue, is not counted. A guest account is kept if our records show a Curator trial or subscription for it,
+       free Curator access we gave it, a friend or friend request, or a message it sent or received. Approved
+       community decks it submitted stay up without its name, and its other submissions are removed. The
+       cleanup never touches what is saved on your device. An account with a confirmed email is never part of
+       it.</p>
 
     <h2 id="delete-account">Delete your account &amp; data</h2>
     <div class="panel">
