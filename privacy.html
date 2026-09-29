@@ -85,7 +85,10 @@
     <h2>Collected automatically</h2>
     <ul>
       <li><strong>Push token.</strong> If you allow notifications, a device push token is stored so the app
-          can deliver them (deck alerts, friend messages, community updates).</li>
+          can deliver them (deck alerts, price watch alerts, friend messages, community updates, and a reminder
+          before a Curator free trial or an Attic Pass ends). We also store the language your app is set to, so
+          reminders arrive in it, and the end date of the last trial and of the last pass a reminder was due
+          for, so no reminder is sent twice.</li>
       <li><strong>Device identifier.</strong> A device ID is checked when starting a free trial, used only
           to prevent repeat-trial abuse.</li>
       <li><strong>Card data requests.</strong> Card information and prices come from Scryfall's public API;
@@ -95,14 +98,24 @@
       <li><strong>Usage events.</strong> The app records basic usage events (for example, that the app was
           opened or a deck was generated) with your app version and platform, so we can tell which features
           are working. These are tied to your account, never sold or used for advertising, deleted
-          automatically after 180 days, and deleted immediately when you delete your account.</li>
+          automatically after 180 days, and deleted immediately when you delete your account. Usage events
+          also include one daily summary of how your scans went on each device, such as how many you tried, how
+          many were added automatically or typed by hand, and how many hit a camera error. It never says which
+          cards were scanned.</li>
+      <li><strong>Error reports.</strong> When the app hits an error or closes unexpectedly, it records the kind
+          of error, the place in the app's own code where it happened, the screen you were on and the app
+          version, at most once a day for each error on each device. It never records the error message or
+          anything you typed. Error reports follow the same rules as usage events. They're tied to your account,
+          never sold or used for advertising, deleted automatically after 180 days, and deleted immediately when
+          you delete your account.</li>
     </ul>
 
     <h2>Purchases</h2>
     <p>Subscriptions are billed entirely by your app store (Google Play on Android, the App Store on
        iOS), so we never see or store your payment details. We use RevenueCat to confirm your subscription
        status and unlock premium features; it receives a purchase token and an app-specific user identifier
-       to validate the subscription, never your payment information.</p>
+       to validate the subscription, never your payment information. If renewal reminders are on, we also use
+       your purchase records to remind you before a free trial or an Attic Pass ends.</p>
 
     <h2>What we don't do</h2>
     <ul>
