@@ -91,7 +91,10 @@
           for, so no reminder is sent twice.</li>
       <li><strong>Device identifier.</strong> A device ID is checked when starting a free trial, used only
           to prevent repeat-trial abuse.</li>
-      <li><strong>Card data requests.</strong> Card information and prices come from Scryfall's public API;
+      <li><strong>Card data requests.</strong> Card information and prices come from Scryfall. Our servers keep
+          a copy of the card prices Scryfall publishes, and the app asks our servers for your cards' prices from
+          that copy first, signed in as your account, the same way it backs up your collection. For anything the
+          copy can't answer, and for all other card information, the app asks Scryfall's public API directly;
           those requests carry standard technical information (like any web request) but no account data.
           Sealed-product prices come from JustTCG, fetched once daily by our servers. The app on your
           device never contacts JustTCG.</li>
