@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- THE GOOGLE PLAY FORWARDER (2026-10-06). Every Google Play button on the site points here, not at the store, so that each
+     tap is counted. The page loads the same Cloudflare Web Analytics beacon as every other page (no cookies, no personal
+     tracking), gives it a moment to record the page view, then replaces itself with the Play listing. The meta refresh is the
+     no-JavaScript route and the link is the route when both fail. noindex, and not in sitemap.xml: it is a door, not a page.
+     Site URLs are root-relative, as on 404.html, so the page renders the same at any depth. --><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0714" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content="3; url=https://play.google.com/store/apps/details?id=com.arcaneledger.app" />
+  <title>Arcane Ledger on Google Play</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="hero wrap">
+    <img class="logo" src="/icon-360.webp" width="120" height="120" alt="" />
+    <p class="sub">Taking you to Arcane Ledger on Google Play.</p>
+    <a class="btn-gold" href="https://play.google.com/store/apps/details?id=com.arcaneledger.app">Open Google Play</a>
+  </main>
+  <!-- Cloudflare Web Analytics: privacy-first visit counting, no cookies, no personal tracking,
+       so no consent banner is needed. Dashboard: dash.cloudflare.com, Web Analytics. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "71e10735d8584be0b1e62e70bc0722fe"}'></script>
+  <script>
+    // Leave after the page has loaded (the beacon runs on load) plus a moment, so the view is sent before the page goes.
+    // replace() keeps this page out of the back history, so Back from the store returns to where the visitor tapped.
+    (function () {
+      var target = "https://play.google.com/store/apps/details?id=com.arcaneledger.app";
+      var go = function () { setTimeout(function () { location.replace(target); }, 800); };
+      if (document.readyState === "complete") go(); else window.addEventListener("load", go);
+    })();
+  </script>
+</body>
+</html>

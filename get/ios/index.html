@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- THE iPHONE FORWARDER (2026-10-06). Any App Store button points here, not at the store, so that each tap is counted. The
+     page loads the same Cloudflare Web Analytics beacon as every other page (no cookies, no personal tracking), gives it a
+     moment to record the page view, then replaces itself with the destination. noindex, and not in sitemap.xml.
+     ⚠ THE DESTINATION IS THE SITE, NOT THE STORE, ON PURPOSE. On 2026-10-06 https://apps.apple.com/app/id6787223502 returned
+     404 and Apple's lookup (itunes.apple.com/lookup?id=6787223502) returned resultCount 0, while a known public app returned
+     200 and 1 by the same two routes, so the app has no public App Store listing. Until it does, this sends the visitor to
+     the home page's "Where can I get it?" answer (#where), which says the iPhone version is in testing. The day the listing
+     is public, change the three URLs below to https://apps.apple.com/app/id6787223502 and the copy to name the App Store. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0714" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content="3; url=/#where" />
+  <title>Arcane Ledger for iPhone</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="hero wrap">
+    <img class="logo" src="/icon-360.webp" width="120" height="120" alt="" />
+    <p class="sub">The iPhone version is in testing and isn't on the App Store yet. Taking you to the home page.</p>
+    <a class="btn-gold" href="/#where">Go to the home page</a>
+  </main>
+  <!-- Cloudflare Web Analytics: privacy-first visit counting, no cookies, no personal tracking,
+       so no consent banner is needed. Dashboard: dash.cloudflare.com, Web Analytics. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "71e10735d8584be0b1e62e70bc0722fe"}'></script>
+  <script>
+    // Leave after the page has loaded (the beacon runs on load) plus a moment, so the view is sent before the page goes.
+    // replace() keeps this page out of the back history.
+    (function () {
+      var target = "/#where";
+      var go = function () { setTimeout(function () { location.replace(target); }, 800); };
+      if (document.readyState === "complete") go(); else window.addEventListener("load", go);
+    })();
+  </script>
+</body>
+</html>

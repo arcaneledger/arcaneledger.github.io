@@ -8,12 +8,17 @@
        2. The meta description: "Coming to Google Play first." becomes "On Google Play now."
        3. The JSON-LD MobileApplication below gains "downloadUrl": "https://play.google.com/store/apps/details?id=com.arcaneledger.app".
        4. The header button on privacy.html, terms.html, support.html and 404.html is a plain Join the Discord link with
-          no store state. Change each to <a class="cta cta-play" href="(the Play URL)">Google Play</a>; style.css already
+          no store state. Change each to <a class="cta cta-play" href="/get/android/">Google Play</a>; style.css already
           styles .cta-play.
        5. The 404 invite button: there is no invite page. The app links nothing under this domain (checked 2026-09-22),
           so 404.html carries only "Back to the home page" and needs no store change. If an invite page is ever built,
-          its install button is the Google Play link.
-     (2026-09-12: 1.7.0 was released in the Play Console and the public listing still 404s, so the page says coming.) -->
+          its install button is /get/android.
+     (2026-09-12: 1.7.0 was released in the Play Console and the public listing still 404s, so the page says coming.)
+     ⭐ EVERY STORE BUTTON GOES THROUGH A FORWARDER (2026-10-06): /get/android/ and /get/ios/ are small noindex pages that load
+     the same Cloudflare beacon, so each tap counts as a page view there, then send the visitor on. Store URLs live in those two
+     files only (the JSON-LD downloadUrl in step 3 stays the real Play URL, because it is data for search engines, not a button).
+     The App Store listing (id 6787223502) is not public yet, so /get/ios/ forwards to the FAQ's "Where can I get it?" (#where).
+     The day apps.apple.com/app/id6787223502 stops returning 404, point /get/ios/ at it. -->
 <html lang="en" class="play-soon">
 <head>
   <meta charset="utf-8" />
@@ -467,6 +472,8 @@
     /* FAQ: one of the three boxed things */
     .faq { max-width: 760px; }
     .faq details { background: var(--panel); border: 1px solid var(--border-soft); border-radius: 14px; margin-bottom: 10px; }
+    /* /get/ios/ lands on #where; without this the sticky header covers the question it lands on. */
+    .faq details[id] { scroll-margin-top: 96px; }
     .faq summary { cursor: pointer; list-style: none; padding: 16px 20px; color: var(--text); font-size: 16px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after { content: "+"; color: var(--gold); font-size: 20px; font-weight: 400; flex-shrink: 0; }
@@ -572,7 +579,7 @@
         <a href="/#pricing">Pricing</a>
         <a href="/#faq">FAQ</a>
         <a class="cta when-soon" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
-        <a class="cta cta-play when-live" href="https://play.google.com/store/apps/details?id=com.arcaneledger.app">Google Play</a>
+        <a class="cta cta-play when-live" href="/get/android/">Google Play</a>
       </nav>
     </div>
   </header>
@@ -591,7 +598,7 @@
         </div>
         <p class="status when-soon">Coming to Google Play first. The iPhone version is in testing.</p>
         <div class="ctas when-live">
-          <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.arcaneledger.app">Get it on Google Play</a>
+          <a class="btn btn-gold" href="/get/android/">Get it on Google Play</a>
           <a class="btn btn-line" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
         </div>
         <p class="status when-live">App Store coming later.</p>
@@ -823,6 +830,14 @@
           with a daily allowance that's larger with Curator.</li>
         <li><b>A spreadsheet of cards.</b> Import a CSV free. With Curator or an Attic Pass it also keeps
           printing, condition, foil and price paid.</li>
+        <li><b>Scan to a file.</b><span class="pill">Curator</span> With Export file, scans go into a scan session on
+          your phone and never into your collection. The app then writes an import file for TCGplayer, BinderPOS,
+          ManaPool or Crystal Commerce, or a plain CSV, which is also the file it gives for Shopify. Each session is
+          kept for 30 days, so you can export it again.</li>
+        <li><b>Buying cards.</b><span class="pill">Curator</span> Buy mode prices each card you scan at today's
+          price and shows a cash offer and a store credit offer. You set both rates and a bulk line. A card with no
+          price today gets no offer. Cards you accept go where the scanner is set to put them, with the price paid
+          recorded.</li>
       </ul>
 
       <h3 class="subhead">Also in the box</h3>
@@ -1022,6 +1037,7 @@
             <li>Deck generators and the cheapest printings to buy</li>
             <li>The Watcher, value history, alerts and sealed tracking</li>
             <li>Auto-scan and detailed imports</li>
+            <li>Export file and Buy mode</li>
             <li>Rue with no daily limit (fair use up to 100 a day)</li>
             <li>Deck Odds, Deck DNA and the Synergy Graph</li>
             <li>Start group chats, and post in groups with no daily limit</li>
@@ -1052,11 +1068,11 @@
         <h2>Questions players ask</h2>
       </div>
       <div class="faq">
-        <details>
+        <details id="where">
           <summary>Where can I get it?</summary>
           <div class="a when-soon">Google Play first, and the iPhone version is in testing. Join the
             <a href="https://discord.gg/G9EgSVWdPP">Discord</a> to hear when each one is out.</div>
-          <div class="a when-live">On <a href="https://play.google.com/store/apps/details?id=com.arcaneledger.app">Google
+          <div class="a when-live">On <a href="/get/android/">Google
             Play</a> now. The iPhone version is in testing and comes to the App Store later. Join the
             <a href="https://discord.gg/G9EgSVWdPP">Discord</a> to hear when it's out.</div>
         </details>
@@ -1101,7 +1117,7 @@
           <span class="reason">For launch news and a say in what gets built.</span>
         </div>
         <div class="ctas when-live">
-          <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.arcaneledger.app">Get it on Google Play</a>
+          <a class="btn btn-gold" href="/get/android/">Get it on Google Play</a>
           <a class="btn btn-line" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
         </div>
       </div>
