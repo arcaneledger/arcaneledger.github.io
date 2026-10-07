@@ -451,6 +451,9 @@
     .ledger.small .row { padding: 12px 0; }
     .ledger.small dd, .ledger.small dt { font-size: 15px; }
     .subhead { font-family: var(--body); font-size: 16px; font-weight: 600; color: var(--gold); margin: 40px 0 12px; }
+    /* For card shops and vendors: a heading per feature, its paragraph in the lists' colour. */
+    .shop .sect-head + .subhead { margin-top: 0; }
+    .shop .subhead + p { color: var(--soft); }
 
     /* Pricing: one of the three boxed things */
     .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
@@ -830,14 +833,6 @@
           with a daily allowance that's larger with Curator.</li>
         <li><b>A spreadsheet of cards.</b> Import a CSV free. With Curator or an Attic Pass it also keeps
           printing, condition, foil and price paid.</li>
-        <li><b>Scan to a file.</b><span class="pill">Curator</span> With Export file, scans go into a scan session on
-          your phone and never into your collection. The app then writes an import file for TCGplayer, BinderPOS,
-          ManaPool or Crystal Commerce, or a plain CSV, which is also the file it gives for Shopify. Each session is
-          kept for 30 days, so you can export it again.</li>
-        <li><b>Buying cards.</b><span class="pill">Curator</span> Buy mode prices each card you scan at today's
-          price and shows a cash offer and a store credit offer. You set both rates and a bulk line. A card with no
-          price today gets no offer. Cards you accept go where the scanner is set to put them, with the price paid
-          recorded.</li>
       </ul>
 
       <h3 class="subhead">Also in the box</h3>
@@ -852,7 +847,28 @@
     </div>
   </section>
 
-  <!-- 6. Rue -->
+  <!-- 6. For card shops and vendors. Chris's text, word for word (2026-10-06); do not reword it. Only what is live on the
+       phones goes here: taking one card out of an offer is built (2026-10-06) and waits for its update before it is mentioned. -->
+  <section id="shops" class="sect shop">
+    <div class="wrap">
+      <div class="sect-head">
+        <h2>For card shops and vendors</h2>
+        <p>Buying cards at the counter or at a show? Arcane Ledger does the math while you scan.</p>
+      </div>
+      <h3 class="subhead">Buy mode<span class="pill">Curator</span></h3>
+      <p>Scan a customer's cards and see two offers right away, cash and store credit, at the rates you set. Set
+        different rates by card price, or save your usual rates and pick them with one tap. Change a card's condition
+        and the totals update. Decline the deal and nothing is saved. Accept it and the cards go into your collection
+        with what you paid for each one, or into an export file for the program you already use.</p>
+      <h3 class="subhead">Export file<span class="pill">Curator</span></h3>
+      <p>Scan straight into a file instead of your collection. When you're done, export it for TCGplayer, BinderPOS,
+        ManaPool, Crystal Commerce, Shopify or a plain CSV, then share it or save it to your phone and import it into
+        the program you already use. Uploading to TCGplayer needs a TCGplayer Level 4 seller account.</p>
+      <p class="note">Buy mode and Export file are part of Curator.</p>
+    </div>
+  </section>
+
+  <!-- 7. Rue -->
   <section class="sect">
     <div class="wrap split rev">
       <div>
@@ -911,7 +927,7 @@
     </div>
   </section>
 
-  <!-- 7. The Watcher (Curator) -->
+  <!-- 8. The Watcher (Curator) -->
   <section class="sect">
     <div class="wrap split">
       <div>
@@ -984,7 +1000,7 @@
     </div>
   </section>
 
-  <!-- 8. New players -->
+  <!-- 9. New players -->
   <section class="sect">
     <div class="wrap">
       <div class="sect-head">
@@ -1004,7 +1020,7 @@
     </div>
   </section>
 
-  <!-- 9. Pricing -->
+  <!-- 10. Pricing -->
   <section id="pricing" class="sect">
     <div class="wrap">
       <div class="sect-head">
@@ -1060,7 +1076,7 @@
     </div>
   </section>
 
-  <!-- 10. FAQ and the final call to action -->
+  <!-- 11. FAQ and the final call to action -->
   <section id="faq" class="sect">
     <div class="wrap">
       <div class="sect-head">
