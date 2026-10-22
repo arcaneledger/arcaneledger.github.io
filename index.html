@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<!-- ⭐ STORE STATE. class="play-soon" below means the Google Play listing is not public yet, so the only call to action
-     is Join the Discord. The day https://play.google.com/store/apps/details?id=com.arcaneledger.app stops returning
-     404, the swap to "play-live" is these edits, all of them in the same push:
+<!-- ⭐ STORE STATE. GOOGLE PLAY WENT LIVE 2026-10-21 (production, 1.10.4, build 33, US only), and the swap below was made that
+     day, in one push: class="play-live", the meta description, the JSON-LD downloadUrl and the four pages' header buttons. The
+     "coming to Google Play" blocks (class when-soon) were then deleted from this page, so the play-soon class has nothing left to
+     show; the two CSS rules that switch on it are kept only so a when-live block can never show beside a when-soon one again.
+     The App Store is still not public: /get/ios/ stays as it is ("App Store coming later"). What the swap was, for the record:
        1. <html class="play-soon"> becomes <html class="play-live">. On this page that alone switches every store block:
           Google Play becomes the gold primary button (hero, header, final panel), Discord becomes the outlined one, and
           "App Store coming later" shows as plain text.
@@ -13,20 +15,20 @@
        5. The 404 invite button: there is no invite page. The app links nothing under this domain (checked 2026-09-22),
           so 404.html carries only "Back to the home page" and needs no store change. If an invite page is ever built,
           its install button is /get/android.
-     (2026-09-12: 1.7.0 was released in the Play Console and the public listing still 404s, so the page says coming.)
+     (2026-09-12: 1.7.0 was released in the Play Console and the public listing still 404'd, so the page said coming.)
      ⭐ EVERY STORE BUTTON GOES THROUGH A FORWARDER (2026-10-06): /get/android/ and /get/ios/ are small noindex pages that load
      the same Cloudflare beacon, so each tap counts as a page view there, then send the visitor on. Store URLs live in those two
      files only (the JSON-LD downloadUrl in step 3 stays the real Play URL, because it is data for search engines, not a button).
      The App Store listing (id 6787223502) is not public yet, so /get/ios/ forwards to the FAQ's "Where can I get it?" (#where).
      The day apps.apple.com/app/id6787223502 stops returning 404, point /get/ios/ at it. -->
-<html lang="en" class="play-soon">
+<html lang="en" class="play-live">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0a0714" />
   <meta name="color-scheme" content="dark" />
   <title>Arcane Ledger | MTG collection scanner and deck builder</title>
-  <meta name="description" content="Scan your Magic: The Gathering cards free and see which decks you already own most of the key cards for, which cards are missing, and what it costs to finish. Coming to Google Play first." />
+  <meta name="description" content="Scan your Magic: The Gathering cards free and see which decks you already own most of the key cards for, which cards are missing, and what it costs to finish. On Google Play now." />
   <link rel="canonical" href="https://arcaneledger.app/" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
@@ -74,6 +76,7 @@
         "applicationCategory": "UtilitiesApplication",
         "description": "A Magic: The Gathering collection scanner and deck builder that shows which decks you already own most of the key cards for.",
         "url": "https://arcaneledger.app/",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.arcaneledger.app",
         "image": "https://arcaneledger.app/icon.png",
         "publisher": { "@id": "https://arcaneledger.app/#organization" },
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -581,7 +584,6 @@
         <a href="/#features">Features</a>
         <a href="/#pricing">Pricing</a>
         <a href="/#faq">FAQ</a>
-        <a class="cta when-soon" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
         <a class="cta cta-play when-live" href="/get/android/">Google Play</a>
       </nav>
     </div>
@@ -595,11 +597,6 @@
         <h1>You own more decks than you think.</h1>
         <p class="lead">Scan your cards free, with no limit. Arcane Ledger counts the key cards you own for every
           deck in its library, names the missing ones and shows what they cost.</p>
-        <div class="ctas when-soon">
-          <a class="btn btn-gold" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
-          <span class="reason">For launch news and a say in what gets built.</span>
-        </div>
-        <p class="status when-soon">Coming to Google Play first. The iPhone version is in testing.</p>
         <div class="ctas when-live">
           <a class="btn btn-gold" href="/get/android/">Get it on Google Play</a>
           <a class="btn btn-line" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
@@ -1098,8 +1095,6 @@
       <div class="faq">
         <details id="where">
           <summary>Where can I get it?</summary>
-          <div class="a when-soon">Google Play first, and the iPhone version is in testing. Join the
-            <a href="https://discord.gg/G9EgSVWdPP">Discord</a> to hear when each one is out.</div>
           <div class="a when-live">On <a href="/get/android/">Google
             Play</a> now. The iPhone version is in testing and comes to the App Store later. Join the
             <a href="https://discord.gg/G9EgSVWdPP">Discord</a> to hear when it's out.</div>
@@ -1136,14 +1131,8 @@
       </div>
 
       <div class="final">
-        <h2 class="when-soon">Be there on day one</h2>
         <h2 class="when-live">Scan your shoebox tonight</h2>
-        <p class="when-soon">Coming to Google Play first. The iPhone version is in testing.</p>
         <p class="when-live">On Google Play now. App Store coming later.</p>
-        <div class="ctas when-soon">
-          <a class="btn btn-gold" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
-          <span class="reason">For launch news and a say in what gets built.</span>
-        </div>
         <div class="ctas when-live">
           <a class="btn btn-gold" href="/get/android/">Get it on Google Play</a>
           <a class="btn btn-line" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
