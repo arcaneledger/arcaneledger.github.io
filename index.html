@@ -195,6 +195,10 @@
     .btn-line:hover { border-color: var(--gold); }
     .ctas { display: flex; gap: 12px 16px; flex-wrap: wrap; align-items: center; }
     .ctas .reason { color: var(--dim); font-size: 14px; }
+    /* Google's official badge, used unaltered (google-play-badge.svg, from Google's Partner Marketing Hub, 2026-10-22). 60 px tall
+       reads clearly on a phone and on a desktop; the padding keeps clear space round it beside the row's gap. */
+    .play-badge { display: inline-block; line-height: 0; padding: 6px 0; }
+    .play-badge img { display: block; height: 60px; width: auto; }
     .status { color: var(--dim); font-size: 14px; margin-top: 12px; }
 
     /* ── Tier tag: an outlined pill ── */
@@ -598,7 +602,7 @@
         <p class="lead">Scan your cards free, with no limit. Arcane Ledger counts the key cards you own for every
           deck in its library, names the missing ones and shows what they cost.</p>
         <div class="ctas when-live">
-          <a class="btn btn-gold" href="/get/android/">Get it on Google Play</a>
+          <a class="play-badge" href="/get/android/"><img src="/google-play-badge.svg" width="203" height="60" alt="Get it on Google Play" /></a>
           <a class="btn btn-line" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
         </div>
         <p class="status when-live">App Store coming later.</p>
@@ -1134,7 +1138,7 @@
         <h2 class="when-live">Scan your shoebox tonight</h2>
         <p class="when-live">On Google Play now. App Store coming later.</p>
         <div class="ctas when-live">
-          <a class="btn btn-gold" href="/get/android/">Get it on Google Play</a>
+          <a class="play-badge" href="/get/android/"><img src="/google-play-badge.svg" width="203" height="60" alt="Get it on Google Play" /></a>
           <a class="btn btn-line" href="https://discord.gg/G9EgSVWdPP">Join the Discord</a>
         </div>
       </div>
@@ -1156,6 +1160,7 @@
         JustTCG. Prices shown in the app are
         estimates from third-party market data and are not offers to buy or sell. App screens shown are
         illustrative renders of real app features.</p>
+      <p class="legal">Google Play and the Google Play logo are trademarks of Google LLC.</p>
     </div>
   </footer>
 
