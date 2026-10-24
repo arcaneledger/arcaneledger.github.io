@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#0a0714" />
   <meta name="color-scheme" content="dark" />
   <title>Arcane Ledger | MTG collection scanner and deck builder</title>
-  <meta name="description" content="Scan your Magic: The Gathering cards free and see which decks you already own most of the key cards for, which cards are missing, and what it costs to finish. On Google Play now." />
+  <meta name="description" content="Scan your Magic: The Gathering cards free and see which decks you already own most of the key cards for, which cards are missing, and what the missing key cards cost. On Google Play now." />
   <meta name='impact-site-verification' value='4af33969-2245-4cfe-b661-3696ed81eed3'>
   <link rel="canonical" href="https://arcaneledger.app/" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -37,7 +37,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Arcane Ledger" />
   <meta property="og:title" content="Arcane Ledger | MTG collection scanner and deck builder" />
-  <meta property="og:description" content="Scan your Magic: The Gathering cards free. See which decks you already own most of the key cards for, which cards are missing, and what it costs to finish." />
+  <meta property="og:description" content="Scan your Magic: The Gathering cards free. See which decks you already own most of the key cards for, which cards are missing, and what the missing key cards cost." />
   <meta property="og:url" content="https://arcaneledger.app/" />
   <meta property="og:image" content="https://arcaneledger.app/og-card-v2.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -359,7 +359,7 @@
     .ph-tabs i.on { color: #e8c97a; }
     .ph-tabs svg.i { width: calc(24 * var(--u)); height: calc(24 * var(--u)); stroke-width: 1.6; }
 
-    /* Deck Brain, the CURATED tab sorted by % Complete, with the 50%+ filter on. */
+    /* Deck Brain, the CURATED tab sorted by % of key cards, with the 50%+ filter on. */
     .ph-dbtitle { padding: calc(14 * var(--u)) calc(16 * var(--u)) 0; margin-bottom: calc(8 * var(--u)); }
     .ph-dbtitle span { display: inline-flex; align-items: center; gap: calc(8 * var(--u)); padding: calc(6 * var(--u)) calc(4 * var(--u)) calc(6 * var(--u)) 0; color: #e8c97a; font-size: calc(20 * var(--u)); font-weight: 700; letter-spacing: calc(1 * var(--u)); }
     .ph-dbtitle svg.i { width: calc(16 * var(--u)); height: calc(16 * var(--u)); }
@@ -642,7 +642,7 @@
                     <div class="ph-lbl"><svg class="i"><use href="#i-flame"/></svg>CLOSEST DECK</div>
                     <div class="ph-title">You're 2 key cards away from Boros Aggro</div>
                     <div class="ph-scope">counting only copies no other deck has claimed</div>
-                    <div class="ph-cta">4 more within reach · tap to finish&nbsp;→</div>
+                    <div class="ph-cta">4 more within reach · tap to see them&nbsp;→</div>
                     <div class="ph-foot">
                       <div class="ph-cta">0 complete · 1 nearly there · 23 underway</div>
                       <div>From a library of 299 decks that keeps growing</div>
@@ -711,7 +711,7 @@
             printings. Share yours with the community once it passes review.</li>
         </ul>
       </div>
-      <!-- Deck Brain's CURATED tab, sorted by % Complete and filtered to 50%+, which leaves five decks: the closest one Home
+      <!-- Deck Brain's CURATED tab, sorted by % of key cards and filtered to 50%+, which leaves five decks: the closest one Home
            names and the four it counts as more within reach (the fixes brief of 2026-09-29: Home no longer counts the closest).
            Real Pioneer decks from the library with their real key card counts; a deck with no art cached shows a flat
            tint of its first color, as the app does. A deck that does not fit stays off the screen. -->
@@ -975,7 +975,7 @@
                 </div>
                 <div class="ph-card ph-watch">
                   <svg class="i"><use href="#i-hat"/></svg>
-                  <div><b>Rue noticed: "Boros Aggro" got $6.40 cheaper to finish</b><span>tap to open the deck</span></div>
+                  <div><b>Rue noticed: the cards you're missing for "Boros Aggro" got $6.40 cheaper</b><span>tap to open the deck</span></div>
                   <svg class="i ph-x"><use href="#i-x"/></svg>
                 </div>
                 <div class="ph-card ph-closest">
@@ -987,7 +987,7 @@
                     <div class="ph-lbl"><svg class="i"><use href="#i-flame"/></svg>CLOSEST DECK</div>
                     <div class="ph-title">You're 2 key cards away from Boros Aggro</div>
                     <div class="ph-scope">counting only copies no other deck has claimed</div>
-                    <div class="ph-cta">4 more within reach · tap to finish&nbsp;→</div>
+                    <div class="ph-cta">4 more within reach · tap to see them&nbsp;→</div>
                     <div class="ph-foot">
                       <div class="ph-cta">0 complete · 1 nearly there · 23 underway</div>
                       <div>From a library of 299 decks that keeps growing</div>
@@ -1048,7 +1048,7 @@
           <div class="cost">$0</div>
           <ul>
             <li>Unlimited tap scanning and tracking</li>
-            <li>Key cards owned, missing lists and the cost to finish</li>
+            <li>Key cards owned, missing lists and the cost of the missing key cards</li>
             <li>Deck builder, sideboards and the bracket check</li>
             <li>Rue, three questions a day</li>
             <li>Imports, CSV export, proxies, wishlist and set tracker</li>
