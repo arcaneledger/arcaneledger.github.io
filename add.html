@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- THE FRIEND-ADD PAGE (N931 DEREK-3, Chris's triage of 2026-10-24). Playgroup's friend QR and its shared link encode
+     https://arcaneledger.app/add?code=CODE, so a phone that scans it without the app lands HERE instead of on nothing.
+     The page tries to open the app on the add-friend sheet (Android: an intent link that falls back to Google Play when the app is
+     missing; elsewhere the arcaneledger:///playgroup?addFriend=CODE link the app has always read), and always shows the code to type
+     and where to get the app. Once Android App Links / iOS universal links are set up for this domain (the app.json and
+     /.well-known work listed in docs/verify/2026-10-24_n931/safety.md), a phone WITH the app opens it straight from the QR and never
+     sees this page; src/routeGuard.js friendAddRouterPath turns the address into the same screen.
+     The code is read from the address, checked to be six letters or digits, and only ever written as text (never as HTML).
+     Site URLs are root-relative, as on 404.html. noindex, and not in sitemap.xml: it is a door, not a page. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0714" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="noindex" />
+  <title>Add a friend | Arcane Ledger</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .friend-code { font-size: 32px; letter-spacing: 6px; font-weight: 700; margin: 8px 0 16px; }
+    .stores { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 20px; }
+    .stores img { display: block; height: 60px; width: auto; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="hero wrap">
+    <img class="logo" src="/icon-360.webp" width="120" height="120" alt="" />
+    <div id="with-code" hidden>
+      <p class="sub">A friend wants to add you on Arcane Ledger.</p>
+      <p>Their friend code:</p>
+      <p class="friend-code" id="code"></p>
+      <a class="btn-gold" id="open" href="/">Open Arcane Ledger</a>
+      <p>Already have the app? Tap the button above, or open Playgroup, tap ADD FRIEND and type the code.</p>
+    </div>
+    <div id="no-code">
+      <p class="sub">This link has no friend code in it. Ask your friend to show their QR code again, or to send you their code.</p>
+    </div>
+    <div class="stores">
+      <p>Don't have the app yet?</p>
+      <a class="play-badge" href="/get/android/"><img src="/google-play-badge.svg" width="203" height="60" alt="Get it on Google Play" /></a>
+      <p>App Store coming later.</p>
+    </div>
+  </main>
+  <!-- Cloudflare Web Analytics: privacy-first visit counting, no cookies, no personal tracking,
+       so no consent banner is needed. Dashboard: dash.cloudflare.com, Web Analytics. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "71e10735d8584be0b1e62e70bc0722fe"}'></script>
+  <script>
+    (function () {
+      var raw = "";
+      try { raw = new URLSearchParams(location.search).get("code") || ""; } catch (e) { raw = ""; }
+      var code = String(raw).trim();
+      if (!/^[A-Za-z0-9]{6}$/.test(code)) return; // not a friend code: the no-code note stays
+      code = code.toUpperCase();
+      document.getElementById("code").textContent = code;
+      document.getElementById("no-code").hidden = true;
+      document.getElementById("with-code").hidden = false;
+      var android = /Android/i.test(navigator.userAgent || "");
+      // Android: an intent link opens the app when it is installed and Google Play when it is not.
+      var link = android
+        ? "intent://playgroup?addFriend=" + code + "#Intent;scheme=arcaneledger;package=com.arcaneledger.app;S.browser_fallback_url="
+          + encodeURIComponent("https://play.google.com/store/apps/details?id=com.arcaneledger.app") + ";end"
+        : "arcaneledger:///playgroup?addFriend=" + code;
+      document.getElementById("open").setAttribute("href", link);
+      // One try on arrival; when the app is not there nothing happens and the page stays, with the code and the store.
+      if (!android) { setTimeout(function () { location.href = link; }, 300); }
+    })();
+  </script>
+</body>
+</html>
