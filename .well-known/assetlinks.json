@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.arcaneledger.app",
+      "sha256_cert_fingerprints": [
+        "B2:8C:FB:A4:21:75:EF:F0:26:3C:06:1B:22:B3:99:36:E3:62:E2:C0:C0:1D:35:6A:5A:0E:0C:9C:56:11:50:3E",
+        "6A:68:49:0E:EB:75:13:24:AB:FE:C2:B1:BC:98:C3:1D:2E:87:BC:82:1A:E4:9C:CD:23:9A:92:4C:07:FB:E0:1E"
+      ]
+    }
+  }
+]

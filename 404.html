@@ -2,11 +2,10 @@
 <!-- GitHub Pages serves this file for ANY missing path, at that path. Every URL here is ROOT-RELATIVE for that reason:
      a relative href at /some/nested/path resolved under /some/nested/ and the page arrived with no stylesheet and
      broken images (seen 2026-09-22).
-     No invite page, measured the same day: the app builds no nested links on arcaneledger.app. Everything it sends to
-     another person points at the site root (Invite a friend, Share Showcase), and friend adds use the custom scheme
-     arcaneledger:///playgroup?addFriend=CODE. Android App Links are NOT verified for this domain (no intentFilters,
-     no autoVerify, no /.well-known/assetlinks.json), so no link from the app is meant to open here. If a shared web
-     link is ever built, give it an invite page here and keep its store button in the play-live swap list in index.html. -->
+     The one nested link the app builds is the friend QR (N931 DEREK-3, 2026-10-24): https://arcaneledger.app/add?code=CODE,
+     served by add.html. From 1.10.6 the app claims /add as an App Link (app.json intentFilters with autoVerify, and
+     associatedDomains on the iPhone's next build), verified by /.well-known/assetlinks.json and apple-app-site-association.
+     Everything else it sends points at the site root (Invite a friend, Share Showcase). -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />

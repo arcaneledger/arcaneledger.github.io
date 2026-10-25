@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["8YQ44259T5.com.arcaneledger.app"],
+        "components": [
+          { "/": "/add", "comment": "A friend's QR code or link: https://arcaneledger.app/add?code=CODE (N931 DEREK-3)" },
+          { "/": "/add.html" }
+        ]
+      }
+    ]
+  }
+}
