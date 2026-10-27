@@ -464,7 +464,7 @@
     .shop .subhead + p { color: var(--soft); }
 
     /* Pricing: one of the three boxed things */
-    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+    .price-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; align-items: stretch; }
     .price { background: var(--panel); border: 1px solid var(--border-soft); border-radius: 18px; padding: 26px 24px; display: flex; flex-direction: column; }
     .price.curator { background: var(--panel2); border-color: #5c4a1e; }
     .price-name { font-size: 22px; font-weight: 700; color: var(--soft); }
@@ -588,6 +588,7 @@
         <a href="/#how">How it works</a>
         <a href="/#features">Features</a>
         <a href="/#pricing">Pricing</a>
+        <a href="/shops.html">For shops</a>
         <a href="/#faq">FAQ</a>
         <a class="cta cta-play when-live" href="/get/android/">Google Play</a>
       </nav>
@@ -829,11 +830,14 @@
       <ul class="dia">
         <li><b>Read on your phone.</b> The card list comes with the app, so tap scanning works with no signal.
           Prices and exact printings need a connection.</li>
-        <li><b>Whole stacks.</b><span class="pill">Curator or Attic Pass</span> Turn on AUTO and feed it cards.
-          When it reads a card it isn't sure of, you hear it and see it instead of getting a guess.</li>
-        <li><b>Cards nothing can read.</b> Tap Identify by photo and the app works it out from the image. Online,
-          with a daily allowance that's larger with Curator.</li>
-        <li><b>A spreadsheet of cards.</b> Import a CSV free. With Curator or an Attic Pass it also keeps
+        <li><b>Whole stacks.</b> Turn on AUTO and feed it cards, free with no limit for every card your phone
+          reads on its own. When it reads a card it isn't sure of, you hear it and see it instead of getting a guess.</li>
+        <li><b>Cards nothing can read.</b> Tap Identify by photo and the app works it out from the image, and
+          Auto-scan does the same for a card your phone can't read. Online, free with a daily allowance the two
+          share. It refills at midnight your time, and a match only counts when it finds the card. When it's used up,
+          Auto-scan keeps going and sets those cards aside for you to pick from a list, type the name, or match
+          after the refill. Curator has no daily allowance.</li>
+        <li><b>A spreadsheet of cards.</b> Import a CSV free. With Curator it also keeps
           printing, condition, foil and price paid.</li>
       </ul>
 
@@ -875,9 +879,9 @@
       <p>Every buy, sale and trade gets a receipt you send from your own email, to yourself or the customer. The Deals
         list keeps every deal with each day's totals and profit, and exports to a spreadsheet for your books.</p>
       <h3 class="subhead">Export file<span class="pill">Curator</span></h3>
-      <p>Scan straight into a file instead of your collection. When you're done, export it for TCGplayer, BinderPOS,
-        ManaPool, Crystal Commerce, Shopify or a plain CSV, then share it or save it to your phone and import it into
-        the program you already use. Uploading to TCGplayer needs a TCGplayer Level 4 seller account.</p>
+      <p>Scan straight into a file instead of your collection. When you're done, export it in a layout several store
+        inventory programs import, or as a plain CSV, then share it or save it to your phone and import it into the
+        program you already use. The app names each layout and what it needs before you export.</p>
       <p class="note">Buy, Sell and Trade modes, deals and Export file are part of Curator.</p>
     </div>
   </section>
@@ -1048,6 +1052,8 @@
           <div class="cost">$0</div>
           <ul>
             <li>Unlimited tap scanning and tracking</li>
+            <li>Auto-scan for whole stacks, with no limit on cards your phone reads on its own</li>
+            <li>Photo matching for cards your phone can't read, with a daily allowance</li>
             <li>Key cards owned, missing lists and the cost of the missing key cards</li>
             <li>Deck builder, sideboards and the bracket check</li>
             <li>Rue, three questions a day</li>
@@ -1066,24 +1072,13 @@
             <li>Combos in your collection</li>
             <li>Deck generators and the cheapest printings to buy</li>
             <li>The Watcher, value history, alerts and sealed tracking</li>
-            <li>Auto-scan, detailed imports and more binders</li>
+            <li>Photo matching with no daily allowance</li>
+            <li>Exact-printing matching when the set line can't be read, and Foil stack</li>
+            <li>Detailed imports and more binders</li>
             <li>Buy, Sell and Trade modes, deals and Export file</li>
             <li>Rue, up to 100 questions a day</li>
             <li>Deck Odds, Deck DNA and the Synergy Graph</li>
             <li>Start group chats, and post in groups with no daily limit</li>
-          </ul>
-        </div>
-        <div class="price">
-          <div class="price-name">Attic Pass</div>
-          <div class="who">For cataloging a collection once</div>
-          <div class="cost">$7.99 <small>one time</small></div>
-          <p class="terms">Thirty days, then it ends by itself. Not a subscription.</p>
-          <ul>
-            <li>Auto-scan for whole stacks</li>
-            <li>More Identify by photo lookups</li>
-            <li>Detailed imports</li>
-            <li>Free features unchanged</li>
-            <li>Nothing to cancel</li>
           </ul>
         </div>
       </div>
@@ -1106,8 +1101,9 @@
         </details>
         <details>
           <summary>Is scanning really free and unlimited?</summary>
-          <div class="a">Yes. Tap to scan as many cards as you like, free for good. Curator adds Auto-scan for
-            stacks.</div>
+          <div class="a">Yes. Tap to scan, or turn on Auto-scan for a whole stack, as many cards as you like,
+            free for good, for every card your phone reads on its own. For a card it can't read, the photo match
+            is free with a daily allowance. Curator has no daily allowance.</div>
         </details>
         <details>
           <summary>Does it work offline?</summary>
