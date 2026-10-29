@@ -459,9 +459,6 @@
     .ledger.small .row { padding: 12px 0; }
     .ledger.small dd, .ledger.small dt { font-size: 15px; }
     .subhead { font-family: var(--body); font-size: 16px; font-weight: 600; color: var(--gold); margin: 40px 0 12px; }
-    /* For card shops and vendors: a heading per feature, its paragraph in the lists' colour. */
-    .shop .sect-head + .subhead { margin-top: 0; }
-    .shop .subhead + p { color: var(--soft); }
 
     /* Pricing: one of the three boxed things */
     .price-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; align-items: stretch; }
@@ -588,7 +585,6 @@
         <a href="/#how">How it works</a>
         <a href="/#features">Features</a>
         <a href="/#pricing">Pricing</a>
-        <a href="/shops.html">For shops</a>
         <a href="/#faq">FAQ</a>
         <a class="cta cta-play when-live" href="/get/android/">Google Play</a>
       </nav>
@@ -853,38 +849,9 @@
     </div>
   </section>
 
-  <!-- 6. For card shops and vendors. Chris's text, word for word (Buy mode and Export file 2026-10-06; the intro, Sell mode,
-       Trade mode, Receipts and deals and the closing line approved by him 2026-10-14); do not reword it. Only what is live on
-       the phones goes here: taking one card out of an offer is built (2026-10-06) and waits for its update before it is
-       mentioned. Each claim and the code that makes it true: scripts/tests/test_website_shop_section.js. -->
-  <section id="shops" class="sect shop">
-    <div class="wrap">
-      <div class="sect-head">
-        <h2>For card shops and vendors</h2>
-        <p>Buying, selling or trading at the counter or at a show? Arcane Ledger does the math while you scan.</p>
-      </div>
-      <h3 class="subhead">Buy mode<span class="pill">Curator</span></h3>
-      <p>Scan a customer's cards and see two offers right away, cash and store credit, at the rates you set. Set
-        different rates by card price, or save your usual rates and pick them with one tap. Change a card's condition
-        and the totals update. Decline the deal and nothing is saved. Accept it and the cards go into your collection
-        with what you paid for each one, or into an export file for the program you already use.</p>
-      <h3 class="subhead">Sell mode<span class="pill">Curator</span></h3>
-      <p>Scan the cards a customer picks out of your case. Each one shows your price, set as a percent of market and
-        rounded the way you like. If you bought the card through the app, you see your profit on it. Sales tax is added
-        for you. Complete the sale and the cards come out of your binders, never from one you've marked personal.</p>
-      <h3 class="subhead">Trade mode<span class="pill">Curator</span></h3>
-      <p>Scan their cards and yours, and add sealed product by search. The app shows who owes what. Counter, settle the
-        difference in cash, card or store credit, and one receipt covers both sides.</p>
-      <h3 class="subhead">Receipts and deals<span class="pill">Curator</span></h3>
-      <p>Every buy, sale and trade gets a receipt you send from your own email, to yourself or the customer. The Deals
-        list keeps every deal with each day's totals and profit, and exports to a spreadsheet for your books.</p>
-      <h3 class="subhead">Export file<span class="pill">Curator</span></h3>
-      <p>Scan straight into a file instead of your collection. When you're done, export it for TCGplayer, BinderPOS,
-        ManaPool, Crystal Commerce, Shopify or a plain CSV, then share it or save it to your phone and import it into
-        the program you already use. Uploading to TCGplayer needs a TCGplayer Level 4 seller account.</p>
-      <p class="note">Buy, Sell and Trade modes, deals and Export file are part of Curator.</p>
-    </div>
-  </section>
+  <!-- 6. (The card shops section, Chris's approved text of 2026-10-06 and 2026-10-14, was TAKEN DOWN by the shop-hide brief of
+       2026-10-28: the app hides its shop tools from every account not on the admin's allowlist. Its words are in git at b5c7e05c,
+       website/index.html, section id "shops"; scripts/tests/test_website_shop_section.js pins that the site names no shop tool.) -->
 
   <!-- 7. Rue -->
   <section class="sect">
@@ -1076,7 +1043,6 @@
             <li>Photo matching with no daily allowance</li>
             <li>Exact-printing matching when the set line can't be read</li>
             <li>Detailed imports and more binders</li>
-            <li>Buy, Sell and Trade modes, deals and Export file</li>
             <li>Rue, up to 100 questions a day</li>
             <li>Deck Odds, Deck DNA and the Synergy Graph</li>
             <li>Start group chats, and post in groups with no daily limit</li>
