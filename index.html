@@ -1,5 +1,15 @@
 <!DOCTYPE html>
-<!-- ⭐ STORE STATE. GOOGLE PLAY WENT LIVE 2026-10-21 (production, 1.10.4, build 33, US only), and the swap below was made that
+<!-- ⭐⭐ STORE STATE, ANDROID FIRST (2026-11-22, Chris: "Android goes live first"): Google Play only, the Curator Shop page live, and
+     "App Store coming later" kept. /get/ sends an Android phone to Google Play and anything else to this page. The App Store version below
+     is ONE commit for the day Apple releases 1.10.8 (docs/store/golive_1.10.8_checklist.md, the website step), described here as it will be:
+     the App Store version is for the day Apple releases 1.10.8
+     and the shop side opens to everyone. The App Store button sits
+     beside Google Play's everywhere the site names a store (the header, the hero, the FAQ, the final panel, /add, /get, the shops page),
+     /get/ios/ forwards to apps.apple.com/app/id6787223502, /get/ sends each phone to its own store, and "App Store coming later" is gone.
+     The header shows both stores on a wide screen and one "Get the app" (/get/) on a phone, where two buttons do not fit one row at 360 px.
+     ⚠ The App Store button is a CSS stand-in at the badge's size until Apple's official badge is downloaded into the site (style.css).
+     The note below is the Google Play history, kept as it was.
+     ⭐ STORE STATE. GOOGLE PLAY WENT LIVE 2026-10-21 (production, 1.10.4, build 33, US only), and the swap below was made that
      day, in one push: class="play-live", the meta description, the JSON-LD downloadUrl and the four pages' header buttons. The
      "coming to Google Play" blocks (class when-soon) were then deleted from this page, so the play-soon class has nothing left to
      show; the two CSS rules that switch on it are kept only so a when-live block can never show beside a when-soon one again.
@@ -184,6 +194,16 @@
     .nav .links a.cta:hover { border-color: var(--gold); }
     .nav .links a.cta-play { color: #0a0714; background: var(--gold); border-color: var(--gold); }
     @media (max-width: 720px) { .nav .links a:not(.cta) { display: none; } }
+    /* The App Store button beside Google Play's badge (hero, final panel, /add, /get, the shops page). ⚠ A STAND-IN, drawn in CSS at the badge's
+       size: Apple's official "Download on the App Store" badge (Apple's marketing tools, an SVG) replaces it once Chris says it may be downloaded
+       into the site, as google-play-badge.svg was from Google. */
+    .store-badge {
+      display: inline-flex; flex-direction: column; justify-content: center; box-sizing: border-box; height: 60px; min-width: 180px;
+      padding: 0 18px; margin: 6px 0; border: 1px solid #a6a6a6; border-radius: 10px; background: #000; color: #fff; text-decoration: none;
+      font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; line-height: 1.1;
+    }
+    .store-badge small { font-size: 11px; font-weight: 500; }
+    .store-badge span { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; }
 
     /* ── Buttons: sentence case, 15px, 700, no letter-spacing. Primary gold fill, secondary gold outline. ── */
     .btn {
@@ -201,6 +221,7 @@
     .play-badge { display: inline-block; line-height: 0; padding: 6px 0; }
     .play-badge img { display: block; height: 60px; width: auto; }
     .status { color: var(--dim); font-size: 14px; margin-top: 12px; }
+    .shops-note { color: var(--soft); font-size: 15px; text-align: center; margin-top: 22px; }
 
     /* ── Tier tag: an outlined pill ── */
     .pill {
@@ -505,6 +526,7 @@
     footer .foot-links a:hover { color: var(--gold); }
     footer .company { color: var(--foot-link); font-size: 13px; margin-bottom: 8px; }
     footer .legal { color: var(--legal); font-size: 13px; max-width: 780px; }
+    footer .legal + .legal { margin-top: 10px; }
 
     /* ── Responsive ──────────────────────────────────────── */
     @media (max-width: 960px) {
@@ -585,6 +607,7 @@
         <a href="/#how">How it works</a>
         <a href="/#features">Features</a>
         <a href="/#pricing">Pricing</a>
+        <a href="/shops.html">For shops</a>
         <a href="/#faq">FAQ</a>
         <a class="cta cta-play when-live" href="/get/android/">Google Play</a>
       </nav>
@@ -1056,6 +1079,8 @@
           </ul>
         </div>
       </div>
+      <p class="shops-note">Run a card shop? <a href="/shops.html">Curator Shop</a> is a separate subscription for shops and vendors:
+        $24.99 a month or $239.99 a year, with a free trial.</p>
     </div>
   </section>
 

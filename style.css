@@ -75,6 +75,24 @@ header.site {
 /* The header's Google Play button after the play-live swap (see the comment at the top of index.html). */
 .nav .links a.cta-play { color: #0a0714; background: var(--gold); border-color: var(--gold); }
 @media (max-width: 720px) { .nav .links a:not(.cta) { display: none; } }
+/* The App Store button beside Google Play's badge (hero, final panel, /add, /get, the shops page). ⚠ A STAND-IN, drawn in CSS at the badge's
+   size: Apple's official "Download on the App Store" badge (Apple's marketing tools, an SVG) replaces it once Chris says it may be downloaded
+   into the site, as google-play-badge.svg was from Google. */
+.store-badge {
+  display: inline-flex; flex-direction: column; justify-content: center; box-sizing: border-box; height: 60px; min-width: 180px;
+  padding: 0 18px; margin: 6px 0; border: 1px solid #a6a6a6; border-radius: 10px; background: #000; color: #fff; text-decoration: none;
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; line-height: 1.1;
+}
+a.store-badge, .page a.store-badge { color: #fff; text-decoration: none; border-color: #a6a6a6; }
+.store-badge small { font-size: 11px; font-weight: 500; }
+.store-badge span { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; }
+/* The two store buttons side by side (/get, the shops page); they stack on a narrow phone. */
+.stores { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: center; margin-top: 20px; }
+.page .stores { justify-content: flex-start; }
+.stores .play-badge { display: inline-block; line-height: 0; padding: 6px 0; }
+.stores .play-badge img { display: block; height: 60px; width: auto; }
+/* A raised box for the page's key facts (the shops page's one app, one price). */
+.page .panel { border: 1px solid rgba(232, 201, 122, 0.35); border-radius: 14px; padding: 18px 20px; background: rgba(52, 33, 92, 0.25); margin-bottom: 8px; }
 
 /* ── Footer (KEEP IN SYNC with index.html) ───────────────── */
 footer { border-top: 1px solid rgba(52, 33, 92, 0.45); padding-top: 30px; padding-bottom: 50px; margin-top: 40px; }
@@ -83,6 +101,7 @@ footer .foot-links a { color: var(--foot-link); font-size: 14px; text-decoration
 footer .foot-links a:hover { color: var(--gold); }
 footer .company { color: var(--foot-link); font-size: 13px; margin-bottom: 8px; }
 footer .legal { color: var(--legal); font-size: 13px; max-width: 780px; }
+footer .legal + .legal { margin-top: 10px; }
 
 /* ── 404 and the invite page ─────────────────────────────── */
 .hero { text-align: center; padding-top: 84px; padding-bottom: 60px; }

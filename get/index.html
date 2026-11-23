@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- THE SMART LINK, arcaneledger.app/get (2026-11-22, for business cards and the counter). ANDROID FIRST (Chris, 2026-11-22): an Android
+     phone goes to /get/android/ (Google Play); an iPhone, an iPad and a computer go to the home page, which says the App Store comes later.
+     On the day Apple releases 1.10.8 this becomes: an iPhone or iPad to /get/ios/ (the App Store), Android to Google Play, a computer stays
+     here and sees both buttons. It sends on AT ONCE and loads no beacon of its own: the forwarder it sends to counts the visit, so a card scan is counted
+     once, and the store opens one hop sooner. noindex, and not in sitemap.xml: a door, not a page. GitHub Pages answers /get with a
+     redirect to /get/, so both spellings work.
+     iPadOS reports itself as a Mac in its browser's user agent; a Mac with a touch screen is taken for an iPad (no Mac has one). -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0714" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="noindex" />
+  <title>Get Arcane Ledger</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <script>
+    (function () {
+      var ua = navigator.userAgent || "";
+      var ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+      var android = /Android/i.test(ua);
+      if (android) location.replace("/get/android/");
+      else location.replace("/"); // an iPhone or iPad (`ios`, kept for Apple's day) and a computer: the home page
+    })();
+  </script>
+</head>
+<body>
+  <main class="hero wrap">
+    <img class="logo" src="/icon-360.webp" width="120" height="120" alt="" />
+    <p class="sub">Arcane Ledger is on Google Play for Android. The App Store comes later.</p>
+    <div class="stores">
+      <a class="play-badge" href="/get/android/"><img src="/google-play-badge.svg" width="203" height="60" alt="Get it on Google Play" /></a>
+    </div>
+    <p><a href="/">About Arcane Ledger</a></p>
+  </main>
+</body>
+</html>

@@ -1,19 +1,104 @@
 <!DOCTYPE html>
-<!-- TAKEN DOWN 2026-10-28 (the shop-hide brief): the app hides its shop tools from every account not on the admin's allowlist,
-     so this page no longer describes them. It stays as a door to the home page so an old link never lands on a 404: a meta
-     refresh (no JavaScript), location.replace (no history entry), a canonical to the home page, noindex, and not in
-     sitemap.xml. The page it replaced is in git at b5c7e05c (website/shops.html). -->
+<!-- FOR CARD SHOPS AND VENDORS: the Curator Shop page (2026-11-22, for 1.10.8's release; the page taken down on 2026-10-28 is in git at
+     b5c7e05c). It goes live with the website deploy on the day the shop side opens to everyone (curator_shop_public, and iPhone selling,
+     curator_shop_ios_sales; docs/store/golive_1.10.8_checklist.md), not before.
+     ⭐ HONEST DATA: every tool named here is one the shop has today, in the app's own words (app/locales/en.json curatorShop.infoWhat* and
+     planFeat*, checked against src/shop/shopTools.js by scripts/tests/test_curator_shop_for_shops.js). The prices are the plan's list
+     prices (src/shop/shopOffer.js PRICE_MONTHLY, PRICE_YEARLY, TRIAL_DAYS and STAFF_SEATS_INCLUDED), and the page says the store shows the
+     final price and the trial before anyone pays. The referral reward is left out: the iPhone does not offer it (Chris, 2026-11-10).
+     No other collection app is named (the export programs are the shop's own tools, Chris 2026-10-27). -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex" />
-  <meta http-equiv="refresh" content="0; url=/" />
-  <link rel="canonical" href="https://arcaneledger.app/" />
-  <title>Arcane Ledger</title>
-  <script>location.replace("/");</script>
+  <meta name="theme-color" content="#0a0714" />
+  <meta name="color-scheme" content="dark" />
+  <title>For card shops and vendors | Arcane Ledger</title>
+  <meta name="description" content="Curator Shop runs your Magic: The Gathering card shop from your phone: buy, sell and trade at the counter, inventory, store credit, holds and your staff. $24.99 a month or $239.99 a year, with a free trial." />
+  <link rel="canonical" href="https://arcaneledger.app/shops.html" />
+  <meta property="og:site_name" content="Arcane Ledger" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preload" href="/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/cinzel-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <p><a href="/">Arcane Ledger</a></p>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="home" href="/"><img src="/icon-104.webp" width="34" height="34" alt="" /><span class="brand">ARCANE LEDGER</span></a>
+      <nav class="links">
+        <a href="/#how">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/shops.html">For shops</a>
+        <a href="/#faq">FAQ</a>
+        <a class="cta cta-play" href="/get/android/">Google Play</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page wrap">
+    <h1>For card shops and vendors</h1>
+    <p class="updated">Curator Shop runs your card shop from your phone: the counter, your stock and your staff in one place.</p>
+
+    <div class="panel">
+      <p><strong>One app.</strong> Curator Shop is not a separate app. It is the same Arcane Ledger your customers use, on Google Play
+         for Android (the iPhone version comes later), and the subscription opens the shop side for you and your staff.</p>
+      <p><strong>One price.</strong> $24.99 a month or $239.99 a year, with a 14-day free trial the first time you subscribe. Ten staff
+         seats are included, and more are free if you ask. The store shows the final price and the free trial before you pay.</p>
+      <p>Curator Shop is its own subscription, separate from Curator, the plan for collectors.</p>
+    </div>
+
+    <h2>What Curator Shop does</h2>
+    <ul>
+      <li><strong>Buy, sell and trade at the counter.</strong> Scan a customer's cards into a sale, a buy or a trade, priced at your own
+          rates as you go.</li>
+      <li><strong>Inventory.</strong> Keep your singles and sealed in stock, and load your stock from a file.</li>
+      <li><strong>Store credit.</strong> Give and spend store credit, with each regular's balance kept for you.</li>
+      <li><strong>Holds.</strong> Hold cards for a customer until they pick them up.</li>
+      <li><strong>Reprice alerts.</strong> See which cards in your stock moved in price, and reprice them in one place.</li>
+      <li><strong>End of day.</strong> Totals for the whole shop and for each person at the close, ready to export.</li>
+      <li><strong>Staff and managers.</strong> Each person works from their own phone, and you choose who joins and who manages.</li>
+      <li><strong>Exports.</strong> Export your inventory or the day's buys as a file for TCGplayer, ManaPool or a spreadsheet.</li>
+    </ul>
+
+    <h2>How to start</h2>
+    <ol>
+      <li>Get Arcane Ledger on <a href="/get/android/">Google Play</a>.</li>
+      <li>Open the <strong>Tools</strong> tab and tap <strong>Run a card shop? Curator Shop</strong>.</li>
+      <li>Tap <strong>START YOUR SHOP</strong>, name your shop, then choose your plan. The free trial starts in the store.</li>
+      <li>Add your staff from the shop's settings. They use the free app on their own phones.</li>
+    </ol>
+    <div class="stores">
+      <a class="play-badge" href="/get/android/"><img src="/google-play-badge.svg" width="203" height="60" alt="Get it on Google Play" /></a>
+    </div>
+
+    <h2>Questions?</h2>
+    <p>Email <a href="mailto:support@arcaneledger.app">support@arcaneledger.app</a>, or open a ticket in #open-a-ticket on
+       our <a href="https://discord.gg/G9EgSVWdPP">Discord</a>.</p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <nav class="foot-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/support.html">Support</a>
+        <a href="https://discord.gg/G9EgSVWdPP">Discord</a>
+      </nav>
+      <p class="company">© Arcane Ledger</p>
+      <p class="legal">Arcane Ledger is not affiliated with, endorsed, sponsored, or approved by Wizards of the
+        Coast LLC. Magic: The Gathering, its logos, card names, and card images are trademarks and copyrights of
+        Wizards of the Coast LLC. Card data and images are provided by Scryfall; sealed-product prices by
+        JustTCG. Prices shown in the app are estimates from third-party market data and are not offers to buy or
+        sell.</p>
+      <p class="legal">Google Play and the Google Play logo are trademarks of Google LLC.</p>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: privacy-first visit counting, no cookies, no personal tracking,
+       so no consent banner is needed. Dashboard: dash.cloudflare.com, Web Analytics. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "71e10735d8584be0b1e62e70bc0722fe"}'></script>
 </body>
 </html>
